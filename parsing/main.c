@@ -59,10 +59,14 @@ int main (int ac , char **av, char **env)
     while (1)
     {
         line = readline("minishell % >>>>>    ");
-        // if(go_check_before(line) == 0)
-        //     printf("syntax error\n");
         token = ft_splitix(line);
         if(token == NULL)
             printf(">>>>>>>>>>>>ra9\n");
+        int i = 0;
+        while (token[i])
+        {
+            printf("%s\n", token[i]);
+            i++;
+        }
     }
 }

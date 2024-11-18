@@ -24,11 +24,11 @@ int	ft_counter(char const *str, char c)
 		return (0);
 	while (str[i])
 	{
-        if(str[i] == 34 || str[i]== 39)
+        if(str[i] == 34 || str[i] == 39)
         {
             v = str[i];
             i++;
-            while (str[i] && str[i] != v)
+            while (str[i] && str[i] != v && str[i] != 32)
                 i++;
         }
 		if (str[i] == c)
@@ -36,8 +36,8 @@ int	ft_counter(char const *str, char c)
 		else
 		{
 			count++;
-            i++;
-			while (str[i] && str[i] != c && str[i]!= 34 && str[i] != 39)
+			i++;
+			while (str[i] && str[i] != c)
 				i++;
 		}
 	}
@@ -54,6 +54,7 @@ char **ft_ret(char *line, char **retu, char c, int word)
 	
 	index = 0;
 	i = 0;
+	printf("%d\n", word);
 	while (index < word)
 	{
 		len = 0;
@@ -77,13 +78,12 @@ char **ft_ret(char *line, char **retu, char c, int word)
 				j++;
 			}
 			retu[index][j] = '\0';
-			i++;
 		}
 		else
 		{
-			while (line[i] && line[i] == c && line[i] != 34 && line[i] != 39)
+			while (line[i] && line[i] == c)
 				i++;
-			while (line[i] && line[i] != c && line[i] != 34 && line[i] != 39)
+			while (line[i] && line[i] != c)
 			{
 				i++;
 				len++;
