@@ -28,7 +28,7 @@ int	ft_counter(char const *str, char c)
         {
             v = str[i];
             i++;
-            while (str[i] && str[i] != v && str[i] != 32)
+            while (str[i] && str[i] != v)
                 i++;
         }
 		if (str[i] == c)
