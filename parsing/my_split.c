@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/17 13:01:11 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:48:49 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,23 @@ char **ft_ret(char *line, char **retu, char c, int word)
 		{
 			v = line[i];
 			i++;
-			while (line[i] && line[i] != v)
+			while (line[i] == c)
+				i++;
+			while (line[i] && line[i] != v )
 			{
 				len++;
 				i++;
+			}
+			if(line[i] == v)
+			{
+				i++;
+				len++;
+				while (line[i] != c)
+				{
+					i++;
+					len++;
+				}
+				len++;
 			}
 			retu[index] = malloc(len + 1);
 			while (len > 0)
