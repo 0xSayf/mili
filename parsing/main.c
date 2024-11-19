@@ -19,21 +19,20 @@ t_token    *ft_init_token_node(char **token)
     int i;
     
     linked = NULL;
-    first  = linked;
+    first  = NULL;
     if(linked == NULL)
     {
         linked = ft_creat_node(token[0]);
-        printf("%s\n", linked->string);
+        first = linked;
     }
     i = 1;
     while(token[i])
     {
-        linked->next = ft_creat_node(token[i]);
-        linked = linked->next;
-         printf("%s\n", linked->string);
+        first->next = ft_creat_node(token[i]);
+        first = first->next;
         i++;
     }
-    return first;
+    return linked;
 }
 
 int main (int ac , char **av, char **env)
@@ -45,7 +44,11 @@ int main (int ac , char **av, char **env)
     {
         line = readline("minishell % >>>>>    ");
         token = ft_splitix(line);
-        ft_init_token_node(token);
-        int i=0;
+        sir = ft_init_token_node(token);
+         t_token *tmp = sir;
+        while (tmp) {
+            printf(">>>>%s\n", tmp->string);
+            tmp = tmp->next;
+        }
     }
 }
