@@ -23,3 +23,4 @@ t_token     *ft_creat_node(char  *content)
     new->next = NULL;
     return new;
 }
+

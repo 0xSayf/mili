@@ -35,6 +35,18 @@ t_token    *ft_init_token_node(char **token)
     return linked;
 }
 
+void    ft_geave_type(t_token *type)
+{
+    t_token *tmp;
+
+    tmp = type;
+    while(tmp)
+    {
+        tmp->data_type = ft_type(tmp->string)
+        tmp = tmp->next;    
+    }
+}
+
 int main (int ac , char **av, char **env)
 {
     char *line;
@@ -45,10 +57,10 @@ int main (int ac , char **av, char **env)
         line = readline("minishell % >>>>>    ");
         token = ft_splitix(line);
         sir = ft_init_token_node(token);
-         t_token *tmp = sir;
-        while (tmp) {
-            printf(">>>>%s\n", tmp->string);
-            tmp = tmp->next;
+        ft_geave_type(sir);
+        while (sir) {
+            printf(">>>>%s\n", sir->string);
+            sir = sir->next;
         }
     }
 }

@@ -23,3 +23,8 @@ int ft_qt(char *line)
     }
     return 0;
 }
+
+data_type (char *string)
+{
+    
+}
