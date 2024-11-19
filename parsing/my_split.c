@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/19 12:02:18 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:28:19 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ char **ft_ret(char *line, char **retu, char c, int word)
 		{
 			v = line[i];
 			i++;
-			while (line[i] == c)
-				i++;
 			while (line[i] && line[i] != v )
 			{
 				len++;
@@ -79,6 +77,7 @@ char **ft_ret(char *line, char **retu, char c, int word)
 				len--;
 				j++;
 			}
+			i++;
 			retu[index][j] = '\0';
 		}
 		else
