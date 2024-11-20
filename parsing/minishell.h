@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/19 15:59:22 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:04:23 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ t_token    *ft_init_token_node(char **token);
 char **ft_splitix(char *line);
 int	ft_counter(char const *str, char c);
 int	ft_count(char const *str, char c);
-
+enum data_type ft_type(t_token *type,char **env);
+char	*ft_strnstr(const char *hay, const char *need, size_t len);
+int	find_path(char *av, char *evp);
+char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	freeing(char **str);
 
 #endif

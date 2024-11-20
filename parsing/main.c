@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/19 16:29:00 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:12:28 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ t_token    *ft_init_token_node(char **token)
     return linked;
 }
 
-void    ft_geave_type(t_token *type)
+void    ft_geave_type(t_token *type,char **env)
 {
     t_token *tmp;
 
     tmp = type;
     while(tmp)
     {
-        tmp->data_type = ft_type(tmp->string)
+        tmp->typ_e = ft_type(tmp,env);
         tmp = tmp->next;    
     }
 }
@@ -57,9 +57,9 @@ int main (int ac , char **av, char **env)
         line = readline("minishell % >>>>>    ");
         token = ft_splitix(line);
         sir = ft_init_token_node(token);
-        ft_geave_type(sir);
+        ft_geave_type(sir,env);
         while (sir) {
-            printf(">>>>%s\n", sir->string);
+            printf(">>>>%d\n", sir->typ_e);
             sir = sir->next;
         }
     }
