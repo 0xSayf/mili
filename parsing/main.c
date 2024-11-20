@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/20 12:16:45 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:25:21 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int main (int ac , char **av, char **env)
         token = ft_splitix(line);
         sir = ft_init_token_node(token);
         ft_geave_type(sir,env);
-        // while (sir) {
-        //     printf(">>>>%d\n", sir->typ_e);
-        //     sir = sir->next;
-        // }
+        while (sir) {
+            printf(">>>>%d\n", sir->typ_e);
+            sir = sir->next;
+        }
     }
     //    atexit(ll);
 }

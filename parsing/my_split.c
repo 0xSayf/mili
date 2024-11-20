@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/19 16:28:19 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:25:05 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char **ft_ret(char *line, char **retu, char c, int word)
 	
 	index = 0;
 	i = 0;
-	printf("%d\n", word);
 	while (index < word)
 	{
 		len = 0;
