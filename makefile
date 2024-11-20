@@ -1,6 +1,6 @@
 CC = cc 
-#FLAGS  = -Wall -Wextra -Werror
-CFILES = main.c ../utils/ft_split.c ft_checking.c my_split.c ../utils/creating_node.c ft_strdup.c ../utils/ft_utils.c
+FLAGS  = -Wall -Wextra -Werror
+CFILES = parsing/main.c parsing/ft_strdup.c parsing/my_split.c parsing/ft_checking.c utils/ft_utils.c utils/creating_node.c utils/ft_split.c 
 RD_DYNAMIC = -lreadline -lncurses
 OFILES = $(CFILES:.c=.o)
 NAME = minishell

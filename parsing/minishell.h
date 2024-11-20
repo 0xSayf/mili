@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/20 12:23:40 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:37:18 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 
 enum data_type
 {
-    STRING,
-    CMD,
-    PIPE,
-    REDERECTION_FILE        
+    STRING, // N 0
+    CMD,    // N 1
+    PIPE,   // N 2
+    REDERECTION_FILE    // N 3    
 };
 
 typedef struct minishell
