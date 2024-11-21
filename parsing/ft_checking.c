@@ -110,11 +110,14 @@ void	ft_syntax(t_token *syntax)
 
 	i = 0;
 	if(!i && *(syntax->string) == '|')
-		printf("syntax error>>>>>>>>>>>>>>>>>>>>>>>\n");
+		printf("syntax error\n");
 	tmp = syntax;
 	while (tmp)
 	{
-		
+		if(tmp->typ_e == PIPE && !tmp->next)
+			printf("syntax errors\n");
+		else if (tmp->typ_e == REDERECTION_INPUT && !tmp->next)
+			printf("Syntax Error : No such file or directory\n");
 		tmp = tmp->next;
 	}
 }
