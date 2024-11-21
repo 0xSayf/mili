@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/21 11:59:31 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:32:52 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ enum data_type ft_type(t_token *type,char **env)
 	int fd;
 	
     i = 0;
-	
     while (ft_strnstr(env[i],"PATH", 4) == NULL)
         i++;
     if(find_path(type->string,env[i]) == 1)
@@ -30,6 +29,18 @@ enum data_type ft_type(t_token *type,char **env)
 	}
 	else if(*(type->string) == '|')
 		return PIPE;
+	else if(*(type->string) == '<')
+	{
+		// if(*(type->string++) == '<')
+		// 	return HERDOC;
+		return REDERECTION_INPUT;
+	}
+	else if(*(type->string) == '>')
+	{
+		// if(*(type->string++) == '>')
+		// 	return HERDOC;
+		return REDERECTION_OUTPUT;
+	}
     return STRING;
 }
 
