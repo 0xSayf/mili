@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/21 16:28:18 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:38:25 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 t_token     *ft_creat_node(char  *content);
 t_token    *ft_init_token_node(char **token);
+void	ft_syntax(t_token *syntax);
 char **ft_splitix(char *line);
 int	ft_counter(char const *str, char c);
 int	ft_count(char const *str, char c);

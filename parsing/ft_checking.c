@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/21 16:32:52 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:38:46 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,13 @@ int ft_qt(char *line)
 		i++;
 	}
 	return 1;
+}
+
+void	ft_syntax(t_token *syntax)
+{
+	int i;
+
+	i = 0;
+	if(!i && *(syntax->string) == '|')
+		printf("syntax error>>>>>>>>>>>>>>>>>>>>>>>\n");
 }
