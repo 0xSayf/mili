@@ -56,5 +56,6 @@ int	find_path(char *av, char *evp);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	freeing(char **str);
+int	ft_strcmp(char *s1, char *s2);
 
 #endif

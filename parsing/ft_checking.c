@@ -31,14 +31,14 @@ enum data_type ft_type(t_token *type,char **env)
 		return PIPE;
 	else if(*(type->string) == '<')
 	{
-		// if(*(type->string++) == '<')
-		// 	return HERDOC;
+		if(!ft_strcmp(type->string, "<<"))
+			return HERDOC;
 		return REDERECTION_INPUT;
 	}
 	else if(*(type->string) == '>')
 	{
-		// if(*(type->string++) == '>')
-		// 	return HERDOC;
+		if(!ft_strcmp(type->string, ">>"))
+			return APPEND_REDIRECT;
 		return REDERECTION_OUTPUT;
 	}
     return STRING;
