@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/21 16:38:46 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:50:27 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ enum data_type ft_type(t_token *type,char **env)
     else if((fd = open(type->string, O_RDONLY, 0777)) != -1)
 	{
 		close(fd);
-		return REDERECTION_FILE;  
+		return FILESS;  
 	}
 	else if(*(type->string) == '|')
 		return PIPE;
