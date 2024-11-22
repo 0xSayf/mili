@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 12:26:10 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:46:44 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,14 @@ int main (int ac , char **av, char **env)
         if(ft_qt(line) == 0)
             printf("syntax error\n");
         token = ft_splitix(line);
-        int i =0;
-        while (token[i])
+        sir = ft_init_token_node(token);
+        t_token *tmp = sir;
+        while (tmp)
         {
-            printf(">>>%s\n",token[i]);
-            i++;
+            printf(">>%s\n", tmp->string);
+            tmp = tmp->next;
         }
-        printf(">>>%s\n",token[i]);
-        // sir = ft_init_token_node(token);
-        // while (sir)
-        // {
-        //     printf(">>%s\n", sir->string);
-        //     sir = sir->next;
-        // }
-        // ft_geave_type(sir,env);
-        // ft_syntax(sir);
+        ft_geave_type(sir,env);
+        ft_syntax(sir);
     }
 }
