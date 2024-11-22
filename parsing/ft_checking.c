@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 15:58:47 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:12:05 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,19 @@ int	find_path(char *av, char *evp)
 		if (access(ret, F_OK && X_OK) == 0)
 		{
 			free(ret);
-			freeing(paths);
+			free(paths);
+			freeing(av_cmd);
+			while (paths[i++])
+			{
+				free(paths[i]);
+			}
 			return (1);
 		}
 		i++;
+		free(ret);
 	}
-	free(ret);
-	freeing(paths);
+	free(paths);
+	freeing(av_cmd);
 	return (0);
 }
 

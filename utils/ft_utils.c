@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:52:43 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 11:01:37 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:54:47 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strnstr(const char *hay, const char *need, size_t len)
 	return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char  *s1, char const *s2)
 {
 	size_t	ls1;
 	size_t	ls2;
@@ -56,6 +56,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy((void *)(ptr), (const void *)s1, ls1);
 	ft_memcpy((void *)(ptr + ls1), (const void *)s2, ls2);
 	ptr[tot - 1] = '\0';
+	free(s1);
 	return (ptr);
 }
 

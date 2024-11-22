@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 16:23:28 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:55:02 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_count(char const *str, char c);
 enum data_type ft_type(t_token *type,char **env);
 char	*ft_strnstr(const char *hay, const char *need, size_t len);
 int	find_path(char *av, char *evp);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char  *s1, char const *s2);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	freeing(char **str);
 int	ft_strcmp(char *s1, char *s2);
