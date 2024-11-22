@@ -6,11 +6,11 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:52:43 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/20 12:03:42 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:01:37 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing/minishell.h"
+#include "../includes/minishell.h"
 
 char	*ft_strnstr(const char *hay, const char *need, size_t len)
 {

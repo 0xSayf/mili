@@ -6,11 +6,11 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/21 16:34:08 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:01:21 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 t_token    *ft_init_token_node(char **token)
 {

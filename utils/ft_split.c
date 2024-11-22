@@ -6,11 +6,11 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:08:58 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/16 16:06:02 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:01:33 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing/minishell.h"
+#include "../includes/minishell.h"
 
  int	ft_count(char const *str, char c)
 {

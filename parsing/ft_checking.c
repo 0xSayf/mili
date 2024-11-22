@@ -6,11 +6,11 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/21 16:51:53 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:01:09 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 enum data_type ft_type(t_token *type,char **env)
 {
