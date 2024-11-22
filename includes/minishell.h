@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 11:03:31 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:23:28 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	freeing(char **str);
 int	ft_strcmp(char *s1, char *s2);
+void    del(char *string);
+void	ft_lstclear(t_token **lst, void (*del)(char *));
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

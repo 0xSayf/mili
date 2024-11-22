@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   creating_node.c                                    :+:      :+:    :+:   */
+/*   creat_and_rem_node.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:38:37 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 11:01:30 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:21:10 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,25 @@ t_token     *ft_creat_node(char  *content)
     return new;
 }
 
+void    del(char *string)
+{
+        free(string);
+}
+
+void	ft_lstclear(t_token **lst, void (*del)(char *))
+{
+	t_token	*curr;
+	t_token	*ne;
+
+	if (!lst || !del)
+		return ;
+	curr = *lst;
+	while (curr)
+	{
+		ne = curr->next;
+		(*del)(curr->string);
+		free(curr);
+		curr = ne;
+	}
+	*lst = NULL;
+}
