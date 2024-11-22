@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 12:11:48 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:27:57 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_counter(char const *str, char c)
         if(str[i] == 34 || str[i] == 39)
         {
             v = str[i];
+			while(str[i] == v && str[i])
+				i++;
             while (str[i] && str[i] != v)
                 i++;
         }
@@ -53,6 +55,7 @@ char **ft_ret(char *line, char **retu, char c, int word)
 	
 	index = 0;
 	i = 0;
+	printf("??%d>>>>>>>>>>...\n",word);
 	while (index < word)
 	{
 		len = 0;
