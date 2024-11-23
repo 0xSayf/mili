@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 22:13:22 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/23 11:29:44 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ enum data_type	ft_type(t_token *type, char **env)
 	int	i;
 	int	fd;
 
+	
 	i = 0;
 	while (ft_strnstr(env[i], "PATH", 4) == NULL)
 		i++;
@@ -83,7 +84,9 @@ int	ft_qt(char *line)
 	int		len;
 	int		num;
 	char	c;
-
+	
+	if(!line)
+		return 0;
 	i = 0;
 	num = 0;
 	len = ft_strlen(line);
@@ -111,6 +114,8 @@ void	ft_syntax(t_token *syntax)
 	int i;
 	t_token *tmp;
 
+	if(!syntax || !syntax->string)
+		return ;
 	tmp = syntax;
 	i = 0;
 	if (!i && *(syntax->string) == '|')
