@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 17:53:54 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 22:26:20 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_counter(char const *str, char c)
 {
-	int	count;
-	int	i;
-    char v;
+	int		count;
+	int		i;
+	char	v;
 
 	i = 0;
 	count = 0;
@@ -24,14 +24,14 @@ int	ft_counter(char const *str, char c)
 		return (0);
 	while (str[i])
 	{
-        if(str[i] == 34 || str[i] == 39)
-        {
-            v = str[i];
-			while(str[i] == v && str[i])
+		if (str[i] == 34 || str[i] == 39)
+		{
+			v = str[i];
+			while (str[i] == v && str[i])
 				i++;
-            while (str[i] && str[i] != v)
-                i++;
-        }
+			while (str[i] && str[i] != v)
+				i++;
+		}
 		if (str[i] == c)
 			i++;
 		else
@@ -45,27 +45,26 @@ int	ft_counter(char const *str, char c)
 	return (count);
 }
 
-char **ft_ret(char *line, char **retu, char c, int word)
+char	**ft_ret(char *line, char **retu, char c, int word)
 {
-	int index;
-	int len;
-	int i;
-	int j;
-	char v;
-	
+	int		index;
+	int		len;
+	int		i;
+	int		j;
+	char	v;
+
 	index = 0;
 	i = 0;
-	printf("??%d>>>>>>>>>>...\n",word);
 	while (index < word)
 	{
 		len = 0;
 		j = 0;
 		while (line[i] == c)
 			i++;
-		if(line[i] == 34 || line[i] == 39)
+		if (line[i] == 34 || line[i] == 39)
 		{
 			v = line[i];
-			while(line[i] == v && line[i])
+			while (line[i] == v && line[i])
 				i++;
 			while (line[i] && line[i] != v)
 			{
@@ -80,7 +79,7 @@ char **ft_ret(char *line, char **retu, char c, int word)
 				j++;
 			}
 			retu[index][j] = '\0';
-			while (line[i] == v )
+			while (line[i] == v)
 				i++;
 		}
 		else
@@ -107,14 +106,14 @@ char **ft_ret(char *line, char **retu, char c, int word)
 	return (retu);
 }
 
-char **ft_splitix(char *line)
+char	**ft_splitix(char *line)
 {
-    int word;
-	char	**retu;
-	
-	word = ft_counter(line,32);
+	int word;
+	char **retu;
+
+	word = ft_counter(line, 32);
 	retu = malloc(sizeof(char *) * (word + 1));
-	retu = ft_ret(line,retu,32,word);
+	retu = ft_ret(line, retu, 32, word);
 	free(line);
-	return retu;
+	return (retu);
 }

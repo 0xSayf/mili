@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 21:29:05 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/22 22:26:00 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@ typedef struct minishell
 char	**ft_split(char const *s, char c);
 t_env     *ft_creat_env(char  *content);
 int ft_qt(char *line);
-void    ft_initial_env(t_env   *env, char **environment);
+t_env    *ft_initial_env(t_env   *env, char **environment);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 t_token     *ft_creat_node(char  *content);
 t_token    *ft_init_token_node(char **token);
 void	ft_syntax(t_token *syntax);
-void    ft_initial_env(t_env   *env, char **environment);
 char **ft_splitix(char *line);
 int	ft_counter(char const *str, char c);
 int	ft_count(char const *str, char c);
@@ -70,5 +69,6 @@ int	ft_strcmp(char *s1, char *s2);
 void    del(char *string);
 void	ft_lstclear(t_token **lst, void (*del)(char *));
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
+void	ft_lst_clr(t_env **env);
 
 #endif

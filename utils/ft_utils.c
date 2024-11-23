@@ -38,7 +38,7 @@ char	*ft_strnstr(const char *hay, const char *need, size_t len)
 	return (NULL);
 }
 
-char	*ft_strjoin(char  *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	size_t	ls1;
 	size_t	ls2;

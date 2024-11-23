@@ -26,9 +26,9 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strdup(const char *s1)
 {
-	int		i;
-	int		size;
-	char	*ptr;
+	int i;
+	int size;
+	char *ptr;
 
 	i = 0;
 	size = ft_strlen(s1) + 1;
