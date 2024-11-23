@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:59:39 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 11:03:19 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/23 22:27:33 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,20 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	}
 	return (0);
+}
+
+int		ft_find(t_env *env, char *line)
+{
+	t_token *tmp;
+	
+	if(!env)
+		return 0;
+	tmp = env;
+	while (tmp)
+	{
+		if(ft_strcmp(env->var,line) == 0)
+			return 1;
+		tmp = tmp->next;
+	}
+	return 0;
 }

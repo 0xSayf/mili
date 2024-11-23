@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/23 21:39:20 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/23 21:46:32 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int	main(int ac, char **av, char **env)
 		sir = ft_init_token_node(token);
 		var.a = ft_geave_type(sir, env);
 		var.i = ft_syntax(sir);
-		if(var.a && var.i)
-			ft_build_tree();
+		// if(var.a && var.i)
+		// 	ft_build_tree();
 		ft_lstclear(&sir, &del);
 		free(token);
 	}
