@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/23 11:29:44 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/23 12:30:25 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ enum data_type	ft_type(t_token *type, char **env)
 	int	i;
 	int	fd;
 
-	
 	i = 0;
 	while (ft_strnstr(env[i], "PATH", 4) == NULL)
 		i++;
@@ -50,22 +49,19 @@ int	find_path(char *av, char *evp)
 	char	**paths;
 	char	*ret;
 	int		i;
-	char	**av_cmd;
 
 	if (!av || !evp)
 		return (0);
 	i = 0;
-	av_cmd = ft_split(av, ' ');
 	paths = ft_split(evp + 5, ':');
 	while (paths[i])
 	{
 		ret = ft_strjoin(paths[i], "/");
-		ret = ft_strjoin(ret, av_cmd[0]);
+		ret = ft_strjoin(ret, av);
 		if (access(ret, F_OK && X_OK) == 0)
 		{
 			free(ret);
 			free(paths);
-			freeing(av_cmd);
 			while (paths[i++])
 				free(paths[i]);
 			return (1);
@@ -74,7 +70,7 @@ int	find_path(char *av, char *evp)
 		free(ret);
 	}
 	free(paths);
-	freeing(av_cmd);
+
 	return (0);
 }
 
