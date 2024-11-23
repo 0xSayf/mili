@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/23 20:57:18 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/23 21:39:20 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,19 @@ t_token	*ft_init_token_node(char **token)
 	return (linked);
 }
 
-void	ft_geave_type(t_token *type, char **env)
+int	ft_geave_type(t_token *type, char **env)
 {
 	t_token	*tmp;
 
 	if(!type || !type->string)
-		return ;
+		return 0;
 	tmp = type;
 	while (tmp)
 	{
 		tmp->typ_e = ft_type(tmp, env);
 		tmp = tmp->next;
 	}
+	return 1;
 }
 void	ll(void)
 {
@@ -58,6 +59,7 @@ int	main(int ac, char **av, char **env)
 {
 	char *line;
 	char **token;
+	t_var	var;
 	t_token *sir;
 	t_env *evv;
 
@@ -70,9 +72,10 @@ int	main(int ac, char **av, char **env)
 		token = ft_splitix(line);
 		ft_expand(token,evv);
 		sir = ft_init_token_node(token);
-		ft_geave_type(sir, env);
-		ft_syntax(sir);
-		
+		var.a = ft_geave_type(sir, env);
+		var.i = ft_syntax(sir);
+		if(var.a && var.i)
+			ft_build_tree();
 		ft_lstclear(&sir, &del);
 		free(token);
 	}

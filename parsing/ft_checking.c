@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/23 20:49:42 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/23 21:37:53 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,35 +105,45 @@ int	ft_qt(char *line)
 	return (1);
 }
 
-void	ft_syntax(t_token *syntax)
+int	ft_syntax(t_token *syntax)
 {
 	int i;
 	t_token *tmp;
 
 	if(!syntax || !syntax->string)
-		return ;
+		return 0;
 	tmp = syntax;
 	i = 0;
 	if(ft_strcmp(syntax->string, "export") == 0)
-		return ;
+		return 0;
 	else if (!i && *(syntax->string) == '|')
 	{
 		printf("syntax error\n");
-		return ;
+		return 0;
 	}
 	else if (!i && tmp->typ_e == STRING)
 	{
 		printf("Syntax Error : cmd not found \n");
-		return ;
+		return 0;
 	}
 	while (tmp)
 	{
 		if (tmp->typ_e == PIPE && !tmp->next)
+		{
 			printf("syntax errors\n");
+			return 0;
+		}
 		else if (tmp->typ_e == REDERECTION_INPUT && !tmp->next)
+		{
 			printf("Syntax Error : No such file or directory\n");
+			return 0;			
+		}
 		else if (tmp->typ_e == PIPE && tmp->next->typ_e == STRING)
+		{
 			printf("syntax Error : cmd not found \n");
+			return 0;
+		}
 		tmp = tmp->next;
 	}
+	return 1;
 }

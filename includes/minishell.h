@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/23 19:25:42 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/23 21:34:20 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ typedef struct env
     struct env *next;
 } t_env;
 
+typedef struct t_var
+{
+    int i;
+    int z;
+    int j;
+    int k;
+    int a;
+    int t;
+}  t_var;
+
 typedef struct minishell
 {
     char *string;
@@ -55,7 +65,7 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 t_token     *ft_creat_node(char  *content);
 t_token    *ft_init_token_node(char **token);
-void	ft_syntax(t_token *syntax);
+int	ft_syntax(t_token *syntax);
 char **ft_splitix(char *line);
 int	ft_counter(char const *str, char c);
 int	ft_count(char const *str, char c);
