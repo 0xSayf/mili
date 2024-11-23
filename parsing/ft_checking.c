@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/23 12:32:58 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:49:42 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,9 @@ void	ft_syntax(t_token *syntax)
 		return ;
 	tmp = syntax;
 	i = 0;
-	if (!i && *(syntax->string) == '|')
+	if(ft_strcmp(syntax->string, "export") == 0)
+		return ;
+	else if (!i && *(syntax->string) == '|')
 	{
 		printf("syntax error\n");
 		return ;
