@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/23 22:42:20 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/24 20:22:44 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,20 @@ typedef struct t_var
     int t;
 }  t_var;
 
-typedef struct minishell
+typedef struct t_minishell
 {
     char *string;
     enum data_type typ_e;
-    struct minishell *next;
+    struct t_minishell *next;
 }   t_token;
+
+typedef struct t_tree
+{
+    struct t_tree *left;
+    struct t_tree *right;
+    char *word;
+    
+} t_tree;
 
 char	**ft_split(char const *s, char c);
 t_env     *ft_creat_env(char  *content);
