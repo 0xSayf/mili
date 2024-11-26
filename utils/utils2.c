@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:59:39 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/26 22:03:43 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:14:06 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,36 @@ int	finder(t_env *env, char *line)
 	return 0;
 }
 
-void	ft_go_del(t_env *env, char *line)
+void	ft_go_del(t_env **env, char *line)
 {
-	t_env 	*tmp;
-	t_env	*last;
-	t_env 	*next;
-	
-	tmp = env;
-	if (ft_strncmp(tmp->var, line, 2) == 0)
-	{
-		t_env *next = tmp->next;
-		free(tmp);
-		env = next; 
-		return;
+	  t_env *tmp;
+   		 t_env *last;
+
+    if (!env || !*env)
+        return; // Check if the list is empty
+
+    tmp = *env;
+
+    // Case 1: If the first element matches the line
+    if (ft_strncmp(tmp->var, line, 2) == 0)
+    {
+        *env = tmp->next;  // Update the head of the list
+        free(tmp->var);    // Free the var
+        free(tmp);         // Free the node
+        return;
     }
-	 while (tmp && tmp->next) {
+
+    // Case 2: Traverse the list and find the element to remove
+    while (tmp && tmp->next)
+    {
         last = tmp;
         tmp = tmp->next;
 
-        if (ft_strncmp(tmp->var, line, 2) == 0) {
-            last->next = tmp->next;
-			// free(tmp->var);
-            free(tmp); 
+        if (ft_strncmp(tmp->var, line, 2) == 0)
+        {
+            last->next = tmp->next;  // Skip the node to be deleted
+            free(tmp->var);          // Free the var
+            free(tmp);               // Free the node
             return;
         }
     }
