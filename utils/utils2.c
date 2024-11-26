@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:59:39 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/26 22:26:32 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:36:08 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,18 @@ int	finder(t_env *env, char *line)
 
 void	ft_go_del(t_env **env, char *line)
 {
-	  t_env *tmp;
-   		 t_env *last;
+	t_env *tmp;
+   	t_env *last;
 
     if (!env || !*env)
-        return; // Check if the list is empty
-
+        return;
     tmp = *env;
-
-    // Case 1: If the first element matches the line
     if (ft_strncmp(tmp->var, line, 2) == 0)
     {
-        *env = tmp->next;  // Update the head of the list   // Free the var
-        free(tmp);         // Free the node
+        *env = tmp->next; 
+        free(tmp); 
         return;
     }
-
-    // Case 2: Traverse the list and find the element to remove
     while (tmp && tmp->next)
     {
         last = tmp;
@@ -86,10 +81,9 @@ void	ft_go_del(t_env **env, char *line)
 
         if (ft_strncmp(tmp->var, line, 2) == 0)
         {
-            last->next = tmp->next;  // Skip the node to be deleted         // Free the var
-            free(tmp);               // Free the node
+            last->next = tmp->next;
+            free(tmp);
             return;
         }
     }
-	
 }
