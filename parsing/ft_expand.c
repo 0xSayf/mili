@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:23:05 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/25 21:33:08 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:51:27 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ void    ft_expand(char **line, t_env *env)
     {
         if(ft_strcmp(line[i],"export") == 0 && line[i+1])
         {
-            if(!ft_finder(env,line[i+1]) || !ft_find(env,line[i+1]))
+            if(!finder(env,line[i+1]))
             {
                 tmp->next = ft_creat_env(ft_strdup(line[i+1]));
                 tmp = tmp->next;
             }
-            else if (ft_finder(env,line[i+1]) && ft_find(env,line[i+1]))
+            else if (finder(env,line[i+1]) && !find(env,line[i+1]))
             {
                 ft_go_del(env,line[i+1]);
+                //  tmp->next = ft_creat_env(ft_strdup(line[i+1]));
+                // tmp = tmp->next;
             }
         }
         i++;

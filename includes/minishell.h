@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/24 20:22:44 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:47:40 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,8 @@ void	ft_lstclear(t_token **lst, void (*del)(char *));
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_lst_clr(t_env **env);
 void    ft_expand(char **line, t_env *env);
+void	ft_go_del(t_env *env, char *line);
+int	finder(t_env *env, char *line);
+int	find(t_env *env, char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:59:39 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/25 21:34:27 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:45:56 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	}
 	return (0);
+}
+
+int	find(t_env *env, char *line)
+{
+	t_env *tmp;
+	
+	if(!env)
+		return 0;
+	tmp = env;
+	while (tmp)
+	{
+		if(ft_strcmp(tmp->var,line) == 0)
+			return 1;
+		tmp = tmp->next;
+	}
+	return 0;
 }
 
 int	finder(t_env *env, char *line)
@@ -50,11 +66,22 @@ void	ft_go_del(t_env *env, char *line)
 	t_env	*last;
 	
 	tmp = env;
-	while (tmp)
+	if (ft_strncmp(tmp->var, line, 2) == 0)
 	{
-		if(ft_strncmp(tmp->var,line,2) == 0)
-			break;
-		tmp = tmp->next;
-	}
+		t_env *next = tmp->next;
+		free(tmp);
+		env = next; 
+		return;
+    }
+	 while (tmp && tmp->next) {
+        last = tmp;
+        tmp = tmp->next;
+
+        if (ft_strncmp(tmp->var, line, 2) == 0) {
+            last->next = tmp->next;
+            free(tmp); 
+            return;
+        }
+    }
 	
 }
