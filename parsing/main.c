@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/25 20:26:20 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:05:51 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ int	main(int ac, char **av, char **env)
 	t_var	var;
 	t_token *sir;
 	t_env *evv;
-
+	int i =0;
 	evv = ft_initial_env(evv, env);
-	while (1)
+	while (i < 4)
 	{
+		atexit(ll);
 		line = readline("minishell % >>>>>    ");
 		if (ft_qt(line) == 0)
 			printf("syntax error\n");
@@ -81,6 +82,8 @@ int	main(int ac, char **av, char **env)
 		// }
 		ft_lstclear(&sir, &del);
 		free(token);
+		i++;
 	}
-	ft_lst_clr(&evv);
+	// ft_lst_clr(&evv);
+	exit(0);
 }
