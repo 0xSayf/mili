@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:59:39 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/26 22:14:06 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:26:32 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ void	ft_go_del(t_env **env, char *line)
     // Case 1: If the first element matches the line
     if (ft_strncmp(tmp->var, line, 2) == 0)
     {
-        *env = tmp->next;  // Update the head of the list
-        free(tmp->var);    // Free the var
+        *env = tmp->next;  // Update the head of the list   // Free the var
         free(tmp);         // Free the node
         return;
     }
@@ -87,8 +86,7 @@ void	ft_go_del(t_env **env, char *line)
 
         if (ft_strncmp(tmp->var, line, 2) == 0)
         {
-            last->next = tmp->next;  // Skip the node to be deleted
-            free(tmp->var);          // Free the var
+            last->next = tmp->next;  // Skip the node to be deleted         // Free the var
             free(tmp);               // Free the node
             return;
         }
