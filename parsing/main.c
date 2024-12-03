@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/03 15:59:28 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:38:55 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ int	main(int ac, char **av, char **env)
 	t_var	var;
 	t_token *sir;
 	t_env *evv;
-	int i =0;
 	evv = ft_initial_env(evv, env);
-	while (i < 4)
+	while (1)
 	{
 		atexit(ll);
 		line = readline("minishell % >>>>>    ");
@@ -82,7 +81,6 @@ int	main(int ac, char **av, char **env)
 		// }
 		ft_lstclear(&sir, &del);
 		free(token);
-		i++;
 	}
 	// ft_lst_clr(&evv);
 	exit(0);
