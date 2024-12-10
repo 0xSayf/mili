@@ -70,17 +70,23 @@ int	main(int ac, char **av, char **env)
 		if (ft_qt(line) == 0)
 			printf("syntax error\n");
 		token = ft_splitix(line);
-		sir = ft_init_token_node(token);
-		var.a = ft_geave_type(sir, env);
-		var.i = ft_syntax(sir);
-		ft_expand(token,evv);
-		// if(var.a && var.i)
-		// {
-		// 	ft_build_tree(sir);
+		int i = 0 ;
+		while (token[i])
+		{
+			printf("%s\n", token[i]);
+			i++;
+		}
+		// sir = ft_init_token_node(token);
+		// var.a = ft_geave_type(sir, env);
+		// var.i = ft_syntax(sir);
+		// ft_expand(token,evv);
+		// // if(var.a && var.i)
+		// // {
+		// // 	ft_build_tree(sir);
 			
-		// }
-		ft_lstclear(&sir, &del);
-		free(token);
+		// // }
+		// ft_lstclear(&sir, &del);
+		// free(token);
 	}
 	// ft_lst_clr(&evv);
 	exit(0);

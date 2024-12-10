@@ -49,6 +49,7 @@ char	**ft_ret(char *line, char **retu, char c, int word)
 {
 	int		index;
 	int		len;
+	int		ten;
 	int		i;
 	int		j;
 	char	v;
@@ -57,6 +58,7 @@ char	**ft_ret(char *line, char **retu, char c, int word)
 	i = 0;
 	while (index < word)
 	{
+	ten = 0;
 		len = 0;
 		j = 0;
 		while (line[i] == c)
@@ -81,25 +83,31 @@ char	**ft_ret(char *line, char **retu, char c, int word)
 			retu[index][j] = '\0';
 			while (line[i] == v)
 				i++;
-		}
-		else
-		{
-			while (line[i] && line[i] == c)
-				i++;
-			while (line[i] && line[i] != c)
-			{
-				i++;
-				len++;
-			}
-			retu[index] = malloc(len + 1);
-			while (len > 0)
-			{
-				retu[index][j] = line[i - len];
-				len--;
-				j++;
-			}
-			retu[index][j] = '\0';
-		}
+		}else
+	{
+    while (line[i] && line[i] == c)
+        i++;
+    retu[index] = malloc(256);
+    while (line[i])
+    {
+        if (line[i] == '\'' || line[i] == '\"')
+        {
+            char quote = line[i];
+            i++; 
+            while (line[i] && line[i] != quote)
+                retu[index][j++] = line[i++];
+            if (line[i] == quote) 
+                i++;
+        }
+        else if (line[i] == c) 
+            break;
+        else 
+            retu[index][j++] = line[i++];
+    }
+
+    retu[index][j] = '\0';
+}
+
 		index++;
 	}
 	retu[index] = NULL;
