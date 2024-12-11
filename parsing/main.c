@@ -58,8 +58,8 @@ void	ll(void)
 int	main(int ac, char **av, char **env)
 {
 	char *line;
+	t_tree *tree;
 	char **token;
-	t_var	var;
 	t_token *sir;
 	t_env *evv;
 	evv = ft_initial_env(evv, env);
@@ -70,23 +70,16 @@ int	main(int ac, char **av, char **env)
 		if (ft_qt(line) == 0)
 			printf("syntax error\n");
 		token = ft_splitix(line);
-		int i = 0 ;
-		while (token[i])
-		{
-			printf("%s\n", token[i]);
-			i++;
-		}
-		// sir = ft_init_token_node(token);
-		// var.a = ft_geave_type(sir, env);
-		// var.i = ft_syntax(sir);
-		// ft_expand(token,evv);
-		// // if(var.a && var.i)
-		// // {
-		// // 	ft_build_tree(sir);
-			
-		// // }
-		// ft_lstclear(&sir, &del);
-		// free(token);
+		sir = ft_init_token_node(token);
+		t_token *ttt = sir ;
+		ft_geave_type(sir, env);
+		ft_syntax(sir);
+		ft_expand(token,evv);
+	
+			tree = build_tree(&ttt);
+			print_tree(tree,0);
+		ft_lstclear(&sir, &del);
+		free(token);
 	}
 	// ft_lst_clr(&evv);
 	exit(0);

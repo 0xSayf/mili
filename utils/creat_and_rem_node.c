@@ -24,6 +24,19 @@ t_token	*ft_creat_node(char *content)
 	return (new);
 }
 
+t_env	*ft_creat_env(char *content)
+{
+	t_env	*new;
+
+	new = (t_env *)malloc(sizeof(t_env));
+	if (!new)
+		return (NULL);
+	new->var = content;
+	new->to_print = NULL;
+	new->next = NULL;
+	return (new);
+}
+
 void	del(char *string)
 {
 	free(string);
@@ -47,18 +60,6 @@ void	ft_lstclear(t_token **lst, void (*del)(char *))
 	*lst = NULL;
 }
 
-t_env	*ft_creat_env(char *content)
-{
-	t_env	*new;
-
-	new = (t_env *)malloc(sizeof(t_env));
-	if (!new)
-		return (NULL);
-	new->var = content;
-	new->to_print = NULL;
-	new->next = NULL;
-	return (new);
-}
 
 void	ft_lst_clr(t_env **env)
 {

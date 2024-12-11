@@ -2,7 +2,7 @@ CC = cc
 FLAGS  = -Wall -Wextra -Werror
 CFILES = parsing/main.c parsing/ft_strdup.c parsing/my_split.c parsing/ft_checking.c \
 utils/ft_utils.c utils/creat_and_rem_node.c utils/ft_split.c utils/utils2.c parsing/build_env.c \
-parsing/ft_expand.c 
+parsing/ft_expand.c parsing/build_tree.c parsing/printing.c
 
 RD_DYNAMIC = -lreadline -lncurses
 OFILES = $(CFILES:.c=.o)

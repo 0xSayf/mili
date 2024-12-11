@@ -40,15 +40,6 @@ typedef struct env
     struct env *next;
 } t_env;
 
-typedef struct t_var
-{
-    int i;
-    int z;
-    int j;
-    int k;
-    int a;
-    int t;
-}  t_var;
 
 typedef struct t_minishell
 {
@@ -59,9 +50,11 @@ typedef struct t_minishell
 
 typedef struct t_tree
 {
+    enum data_type type;
+    char **args;
+    int  file;
     struct t_tree *left;
     struct t_tree *right;
-    char *word;
     
 } t_tree;
 
@@ -93,5 +86,6 @@ void    ft_expand(char **line, t_env *env);
 void	ft_go_del(t_env **env, char *line);
 int	finder(t_env *env, char *line);
 int	find(t_env *env, char *line);
-
+t_tree *build_tree(t_token **tokens);
+void print_tree(t_tree *root, int depth);
 #endif
