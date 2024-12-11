@@ -71,13 +71,13 @@ int	main(int ac, char **av, char **env)
 			printf("syntax error\n");
 		token = ft_splitix(line);
 		sir = ft_init_token_node(token);
+		printf(">>>>%d\n", sir->typ_e);
 		t_token *ttt = sir ;
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
 		ft_expand(token,evv);
-	
-			tree = build_tree(&ttt);
-			print_tree(tree,0);
+		// tree = parse_tokens(&sir);
+		// print_tree(tree,0);
 		ft_lstclear(&sir, &del);
 		free(token);
 	}

@@ -86,6 +86,16 @@ void    ft_expand(char **line, t_env *env);
 void	ft_go_del(t_env **env, char *line);
 int	finder(t_env *env, char *line);
 int	find(t_env *env, char *line);
-t_tree *build_tree(t_token **tokens);
-void print_tree(t_tree *root, int depth);
+t_tree	*parse_tokens(t_token **tokens);
+t_tree	*parse_pipeline(t_token **tokens);
+t_tree	*parse_redirection(t_token **tokens);
+t_tree	*create_file_node(t_token *token);
+t_tree	*parse_command(t_token **tokens);
+t_tree	*new_tree_node(enum data_type type);
+void	free_tree(t_tree *node);
+t_tree	*create_and_link_redirection(t_token **tokens, t_token *tmp);
+int	count_command_arguments(t_token *current);
+void	fill_command_arguments(t_tree *command_node, t_token **tokens, int arg_count);
+void print_tree(t_tree *node, int depth);
+
 #endif
