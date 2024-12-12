@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/12 21:13:23 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/12 22:53:49 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_token	*ft_init_token_node(char **token)
 {
 	t_token	*linked;
 	t_token	*first;
+	int		i;
 	
 	if(!token)
 		return NULL;
-	int		i;
 	linked = NULL;
 	first = NULL;
 	if (linked == NULL)
@@ -34,7 +34,6 @@ t_token	*ft_init_token_node(char **token)
 		first = first->next;
 		i++;
 	}
-	freeing(token);
 	return (linked);
 }
 
@@ -52,30 +51,38 @@ int	ft_geave_type(t_token *type, char **env)
 	}
 	return 1;
 }
-
+void ll()
+{
+	system("leaks -q minishell");
+}
 
 int	main(int ac, char **av, char **env)
 {
-	char *line;
 	t_tree *tree;
-	char **token;
 	t_token *sir;
 	t_env *evv;
+	t_token *tmp;
+	char *line;
+	char **token;
+	
 	evv = NULL;
 	evv = ft_initial_env(evv, env);
-	int i = 0 ;
-	while (1)
+	int i =0;
+	while (i < 5)
 	{
+		atexit(ll);
 		line = readline("minishell % >>>>>    ");
 		if (ft_qt(line) == 0)
 			printf("syntax error\n");
 		token = ft_splitix(line);
 		sir = ft_init_token_node(token);
+		tmp = sir;
+		freeing(token);
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
-		tree = parse_tokens(&sir);
+		// tree = parse_tokens(&tmp);
 		print_tree(tree,0);
-		ft_lstclear(&sir);
+		ft_lstclear(&tmp);
 		i++;
 	}
 	// ft_lst_clr(&evv);

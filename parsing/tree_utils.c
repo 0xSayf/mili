@@ -25,13 +25,13 @@ void	free_tree(t_tree *node)
 	{
 		while (node->args && node->args[i])
 		{
-			// free(node->args[i]);
+			free(node->args[i]);
 			i++;
 		}
-		// free(node->args);
+		free(node->args);
 	}
-	// free_tree(node->left);
-	// free_tree(node->right);
+	free_tree(node->left);
+	free_tree(node->right);
 	free(node);
 }
 
@@ -43,8 +43,8 @@ t_tree	*create_and_link_redirection(t_token **tokens, t_token *tmp)
 	*tokens = (*tokens)->next->next;
 	redirect_node->left = parse_redirection(tokens);
 	redirect_node->right = create_file_node(tmp->next);
-	// free(tmp->string);
-	// free(tmp);
+	free(tmp->string);
+	free(tmp);
 	return (redirect_node);
 }
 
@@ -72,8 +72,8 @@ void	fill_command_arguments(t_tree *command_node, t_token **tokens, int arg_coun
 		command_node->args[i] = ft_strdup((*tokens)->string);
 		tmp = *tokens;
 		*tokens = (*tokens)->next;
-		// free(tmp->string);
-		// free(tmp);
+		free(tmp->string);
+		free(tmp);
 		i++;
 	}
 	command_node->args[arg_count] = NULL;
