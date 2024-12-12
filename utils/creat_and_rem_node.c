@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:38:37 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/26 22:21:07 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:31:50 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_env	*ft_creat_env(char *content)
 	new = (t_env *)malloc(sizeof(t_env));
 	if (!new)
 		return (NULL);
-	new->var = content;
+	new->var = ft_strdup(content);
 	new->to_print = NULL;
 	new->next = NULL;
 	return (new);

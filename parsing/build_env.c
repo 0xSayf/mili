@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:48:31 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 22:06:51 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:44:09 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ t_env	*ft_initial_env(t_env *env, char **environment)
 	int i;
 
 	tmp = NULL;
+	i = 0;
 	if (!env)
 	{
 		env = ft_creat_env(environment[0]);
 		tmp = env;
+		i++;
 	}
 	tmp = env;
-	i = 1;
 	while (environment[i])
 	{
 		tmp->next = ft_creat_env(environment[i]);
