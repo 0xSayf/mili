@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/12 20:26:36 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/12 21:13:23 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_token	*ft_init_token_node(char **token)
 {
-	if(!token)
-		return NULL;
 	t_token	*linked;
 	t_token	*first;
+	
+	if(!token)
+		return NULL;
 	int		i;
-
 	linked = NULL;
 	first = NULL;
 	if (linked == NULL)
@@ -34,6 +34,7 @@ t_token	*ft_init_token_node(char **token)
 		first = first->next;
 		i++;
 	}
+	freeing(token);
 	return (linked);
 }
 
@@ -51,10 +52,8 @@ int	ft_geave_type(t_token *type, char **env)
 	}
 	return 1;
 }
-void	ll(void)
-{
-	system("leaks minishell");
-}
+
+
 int	main(int ac, char **av, char **env)
 {
 	char *line;
@@ -63,11 +62,10 @@ int	main(int ac, char **av, char **env)
 	t_token *sir;
 	t_env *evv;
 	evv = NULL;
-	// evv = ft_initial_env(evv, env);
+	evv = ft_initial_env(evv, env);
 	int i = 0 ;
-	while (i <5)
+	while (1)
 	{
-		atexit(ll);
 		line = readline("minishell % >>>>>    ");
 		if (ft_qt(line) == 0)
 			printf("syntax error\n");
@@ -75,11 +73,9 @@ int	main(int ac, char **av, char **env)
 		sir = ft_init_token_node(token);
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
-		ft_expand(token,evv);
-		// tree = parse_tokens(&sir);
-		// print_tree(tree,0);
+		tree = parse_tokens(&sir);
+		print_tree(tree,0);
 		ft_lstclear(&sir);
-		freeing(token);
 		i++;
 	}
 	// ft_lst_clr(&evv);
