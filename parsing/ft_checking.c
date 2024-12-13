@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/13 17:28:11 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:35:05 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,18 +110,19 @@ int	ft_syntax(t_token *syntax)
 	int i;
 	t_token *tmp;
 
+	tmp = NULL;
 	if(!syntax || !syntax->string)
 		return 0;
 	tmp = syntax;
 	i = 0;
-	if(ft_strcmp(syntax->string, "export") == 0)
+	if(ft_strcmp(tmp->string, "export") == 0)
 		return 0;
-	else if (!i && *(syntax->string) == '|')
+	else if (!i && *(tmp->string) == '|')
 	{
 		printf("syntax error\n");
 		return 0;
 	}
-	else if (!i && tmp->typ_e == STRING)
+	else if (!i && tmp->typ_e != CMD)
 	{
 		printf("Syntax Error : cmd not found \n");
 		return 0;
