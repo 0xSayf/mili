@@ -70,7 +70,6 @@ int	find_path(char *av, char *evp)
 		free(ret);
 	}
 	free(paths);
-
 	return (0);
 }
 
@@ -80,9 +79,9 @@ int	ft_qt(char *line)
 	int		len;
 	int		num;
 	char	c;
-	
-	if(!line)
-		return 0;
+
+	if (!line)
+		return (0);
 	i = 0;
 	num = 0;
 	len = ft_strlen(line);
@@ -111,40 +110,40 @@ int	ft_syntax(t_token *syntax)
 	t_token *tmp;
 
 	tmp = NULL;
-	if(!syntax || !syntax->string)
-		return 0;
+	if (!syntax || !syntax->string)
+		return (0);
 	tmp = syntax;
 	i = 0;
-	if(ft_strcmp(tmp->string, "export") == 0)
-		return 0;
+	if (ft_strcmp(tmp->string, "export") == 0)
+		return (0);
 	else if (!i && *(tmp->string) == '|')
 	{
 		printf("syntax error\n");
-		return 0;
+		return (0);
 	}
 	else if (!i && tmp->typ_e != CMD)
 	{
 		printf("Syntax Error : cmd not found \n");
-		return 0;
+		return (0);
 	}
 	while (tmp)
 	{
 		if (tmp->typ_e == PIPE && !tmp->next)
 		{
 			printf("syntax errors\n");
-			return 0;
+			return (0);
 		}
 		else if (tmp->typ_e == REDERECTION_INPUT && !tmp->next)
 		{
 			printf("Syntax Error : No such file or directory\n");
-			return 0;			
+			return (0);
 		}
 		else if (tmp->typ_e == PIPE && tmp->next->typ_e == STRING)
 		{
 			printf("syntax Error : cmd not found \n");
-			return 0;
+			return (0);
 		}
 		tmp = tmp->next;
 	}
-	return 1;
+	return (1);
 }

@@ -60,7 +60,6 @@ void	ft_lstclear(t_token **lst)
 	*lst = NULL;
 }
 
-
 void	ft_lst_clr(t_env **env)
 {
 	t_env *curr;

@@ -18,7 +18,7 @@
 
 //     new = malloc(sizeof(t_tree));
 //     if (!new)
-//         return NULL;
+//         return (NULL);
 //     new->args = malloc(sizeof(char *) * 2);
 //     new->args[0] = token->string;
 //     new->args[1] = NULL;

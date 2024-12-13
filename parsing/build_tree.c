@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:28:23 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/12 20:49:42 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:30:46 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_tree	*parse_command(t_token **tokens)
 {
-	t_tree		*command_node;
-	int			arg_count;
+	t_tree	*command_node;
+	int		arg_count;
 
 	command_node = new_tree_node(STRING);
 	arg_count = count_command_arguments(*tokens);
@@ -28,7 +28,7 @@ t_tree	*parse_command(t_token **tokens)
 
 t_tree	*create_file_node(t_token *token)
 {
-	t_tree		*node;
+	t_tree	*node;
 
 	node = malloc(sizeof(t_tree));
 	if (!node)
@@ -50,9 +50,9 @@ t_tree	*create_file_node(t_token *token)
 
 t_tree	*parse_redirection(t_token **tokens)
 {
-	t_token		*tmp;
-	t_tree		*redirect_node;
-	t_token		*next_token;
+	t_token	*tmp;
+	t_tree	*redirect_node;
+	t_token	*next_token;
 
 	if (!*tokens)
 		return (NULL);
@@ -62,7 +62,8 @@ t_tree	*parse_redirection(t_token **tokens)
 	while (*tokens && (*tokens)->next)
 	{
 		next_token = (*tokens)->next;
-		if ((*tokens)->next->typ_e >= REDERECTION_INPUT && (*tokens)->next->typ_e <= HERDOC)
+		if ((*tokens)->next->typ_e >= REDERECTION_INPUT
+			&& (*tokens)->next->typ_e <= HERDOC)
 		{
 			redirect_node = new_tree_node((*tokens)->next->typ_e);
 			(*tokens)->next = next_token->next->next;
@@ -77,9 +78,9 @@ t_tree	*parse_redirection(t_token **tokens)
 
 t_tree	*parse_pipeline(t_token **tokens)
 {
-	t_token		*tmp;
-	t_token		*next_token;
-	t_tree		*pipe_node;
+	t_token	*tmp;
+	t_token	*next_token;
+	t_tree	*pipe_node;
 
 	tmp = *tokens;
 	while (*tokens && (*tokens)->next)
@@ -91,7 +92,7 @@ t_tree	*parse_pipeline(t_token **tokens)
 			(*tokens)->next = NULL;
 			pipe_node->left = parse_redirection(&tmp);
 			pipe_node->right = parse_pipeline(&(next_token->next));
-			free(next_token->string);
+			// free(next_token->string);
 			free(next_token);
 			return (pipe_node);
 		}
@@ -106,5 +107,3 @@ t_tree	*parse_tokens(t_token **tokens)
 		return (NULL);
 	return (parse_pipeline(tokens));
 }
-
-

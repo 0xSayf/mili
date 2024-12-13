@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tree_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/13 20:38:52 by sahamzao          #+#    #+#             */
+/*   Updated: 2024/12/13 20:38:54 by sahamzao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 t_tree	*new_tree_node(enum data_type type)
 {
-	t_tree		*node;
+	t_tree	*node;
 
 	node = malloc(sizeof(t_tree));
 	if (!node)
@@ -16,7 +28,7 @@ t_tree	*new_tree_node(enum data_type type)
 
 void	free_tree(t_tree *node)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	if (!node)
@@ -37,7 +49,7 @@ void	free_tree(t_tree *node)
 
 t_tree	*create_and_link_redirection(t_token **tokens, t_token *tmp)
 {
-	t_tree		*redirect_node;
+	t_tree	*redirect_node;
 
 	redirect_node = new_tree_node((*tokens)->typ_e);
 	*tokens = (*tokens)->next->next;
@@ -50,7 +62,7 @@ t_tree	*create_and_link_redirection(t_token **tokens, t_token *tmp)
 
 int	count_command_arguments(t_token *current)
 {
-	int		arg_count;
+	int	arg_count;
 
 	arg_count = 0;
 	while (current && current->typ_e == STRING)
@@ -61,10 +73,11 @@ int	count_command_arguments(t_token *current)
 	return (arg_count);
 }
 
-void	fill_command_arguments(t_tree *command_node, t_token **tokens, int arg_count)
+void	fill_command_arguments(t_tree *command_node, t_token **tokens,
+		int arg_count)
 {
-	int		i;
-	t_token	*tmp;
+	int i;
+	t_token *tmp;
 
 	i = 0;
 	while (i < arg_count)

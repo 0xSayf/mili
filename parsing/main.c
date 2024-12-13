@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/13 18:37:42 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:32:09 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_token	*ft_init_token_node(char **token)
 	t_token	*linked;
 	t_token	*first;
 	int		i;
-	
-	if(!token)
-		return NULL;
+
+	if (!token)
+		return (NULL);
 	linked = NULL;
 	first = NULL;
 	if (linked == NULL)
@@ -41,17 +41,17 @@ int	ft_geave_type(t_token *type, char **env)
 {
 	t_token	*tmp;
 
-	if(!type || !type->string)
-		return 0;
+	if (!type || !type->string)
+		return (0);
 	tmp = type;
 	while (tmp)
 	{
 		tmp->typ_e = ft_type(tmp, env);
 		tmp = tmp->next;
 	}
-	return 1;
+	return (1);
 }
-void ll()
+void	ll(void)
 {
 	system("leaks -q minishell");
 }
@@ -64,27 +64,27 @@ int	main(int ac, char **av, char **env)
 	t_token *tmp;
 	char *line;
 	char **tok;
-	
+
 	evv = NULL;
 	evv = ft_initial_env(evv, env);
-	int i =0;
-	while (i < 5)
+	int i = 0;
+	while (i < 1)
 	{
 		line = readline("minishell % >>>>>    ");
 		if (ft_qt(line) == 0)
 			printf("syntax error\n");
 		tok = ft_splitix(line);
-		sir = ft_init_token_node(tok);		
-		tmp = sir;    
+		char **ptr = tok;
+		sir = ft_init_token_node(tok);
+		tmp = sir;
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
 		tree = parse_tokens(&tmp);
-		// print_tree(tree,0);
+		print_tree(tree, 0);
 		ft_lstclear(&sir);
 		free_tree(tree);
-		freeing(tok);
 		i++;
 	}
-		atexit(ll);
+	atexit(ll);
 	exit(0);
 }
