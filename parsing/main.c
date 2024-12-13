@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/12 22:53:49 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:23:27 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,22 @@ int	main(int ac, char **av, char **env)
 	int i =0;
 	while (i < 5)
 	{
-		atexit(ll);
 		line = readline("minishell % >>>>>    ");
 		if (ft_qt(line) == 0)
 			printf("syntax error\n");
 		token = ft_splitix(line);
 		sir = ft_init_token_node(token);
-		tmp = sir;
 		freeing(token);
+		tmp = sir;           
 		ft_geave_type(sir, env);
-		ft_syntax(sir);
+		// ft_syntax(sir);
 		// tree = parse_tokens(&tmp);
-		print_tree(tree,0);
+		// print_tree(tree,0);
 		ft_lstclear(&tmp);
+		// free_tree(tree);
 		i++;
 	}
+		atexit(ll);
 	// ft_lst_clr(&evv);
 	exit(0);
 }

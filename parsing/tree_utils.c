@@ -72,8 +72,8 @@ void	fill_command_arguments(t_tree *command_node, t_token **tokens, int arg_coun
 		command_node->args[i] = ft_strdup((*tokens)->string);
 		tmp = *tokens;
 		*tokens = (*tokens)->next;
-		free(tmp->string);
-		free(tmp);
+		// free(tmp->string);
+		// free(tmp);
 		i++;
 	}
 	command_node->args[arg_count] = NULL;
