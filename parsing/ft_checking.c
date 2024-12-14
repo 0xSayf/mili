@@ -18,11 +18,11 @@ enum data_type	ft_type(t_token *type, char **env)
 	int	fd;
 
 	i = 0;
-	while (ft_strnstr(env[i], "PATH", 4) == NULL)
-		i++;
-	if (find_path(type->string, env[i]) == 1)
-		return (CMD);
-	else if ((fd = open(type->string, O_RDONLY, 0777)) != -1)
+	// while (ft_strnstr(env[i], "PATH", 4) == NULL)
+	// 	i++;
+	// if (find_path(type->string, env[i]) == 1)
+	// 	return (CMD);
+	if ((fd = open(type->string, O_RDONLY, 0777)) != -1)
 	{
 		close(fd);
 		return (FILESS);
@@ -41,7 +41,7 @@ enum data_type	ft_type(t_token *type, char **env)
 			return (APPEND_REDIRECT);
 		return (REDERECTION_OUTPUT);
 	}
-	return (STRING);
+	return (CMD);
 }
 
 int	find_path(char *av, char *evp)
@@ -138,7 +138,7 @@ int	ft_syntax(t_token *syntax)
 			printf("Syntax Error : No such file or directory\n");
 			return (0);
 		}
-		else if (tmp->typ_e == PIPE && tmp->next->typ_e == STRING)
+		else if (tmp->typ_e == PIPE )
 		{
 			printf("syntax Error : cmd not found \n");
 			return (0);

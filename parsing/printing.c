@@ -1,65 +1,96 @@
 #include "../includes/minishell.h"
 #include <stdio.h>
 
-// Helper function to print the data_type as a string
-void	print_tree(t_tree *node, int depth)
+void print_escaped(FILE *stream, const char *str)
 {
-	if (!node)
-		return ;
 
-	// Indentation for readability
-	for (int i = 0; i < depth; i++)
-	{
-		printf("  ");
-	}
+    if (!str) return;
 
-	// Print the type directly using a switch statement
-	printf("Node Type: ");
-	switch (node->type)
-	{
-	case STRING:
-		printf("STRING");
-		break ;
-	case CMD:
-		printf("CMD");
-		break ;
-	case PIPE:
-		printf("PIPE");
-		break ;
-	case FILESS:
-		printf("FILESS");
-		break ;
-	case REDERECTION_INPUT:
-		printf("REDIRECTION_INPUT (<)");
-		break ;
-	case REDERECTION_OUTPUT:
-		printf("REDIRECTION_OUTPUT (>)");
-		break ;
-	case HERDOC:
-		printf("HERDOC (<<)");
-		break ;
-	case APPEND_REDIRECT:
-		printf("APPEND_REDIRECT (>>)");
-		break ;
-	default:
-		printf("UNKNOWN");
-	}
-	printf("\n");
+    while (*str)
 
-	// Print arguments if present
-	if (node->args)
 	{
-		for (int i = 0; node->args[i]; i++)
+
+        switch (*str)
+
 		{
-			for (int j = 0; j < depth + 1; j++)
-			{
-				printf("  ");
-			}
-			printf("Arg[%d]: %s\n", i, node->args[i]);
-		}
-	}
 
-	// Recursively print the left and right children
-	print_tree(node->left, depth + 1);
-	print_tree(node->right, depth + 1);
+            case '\n': fprintf(stream, "\\n"); break;
+
+            case '\"': fprintf(stream, "\\\""); break;
+
+            case '\\': fprintf(stream, "\\\\"); break;
+
+            default: fputc(*str, stream);
+
+        }
+
+        str++;
+
+    }
+}
+
+void print_ast_dot(t_tree *node, FILE *stream)
+{
+    if (node == NULL) return;
+
+    // Print the current node with its type and arguments
+    fprintf(stream, "\"%p\" [label=\"", (void*)node);
+    switch (node->type)
+    {
+        case CMD: fprintf(stream, "CMD: "); break;
+        case PIPE: fprintf(stream, "|"); break;
+        case REDERECTION_INPUT: fprintf(stream, "<"); break;
+        case REDERECTION_OUTPUT: fprintf(stream, ">"); break;
+        case HERDOC: fprintf(stream, "<<"); break;
+        case APPEND_REDIRECT: fprintf(stream, ">>"); break;
+        default: fprintf(stream, "UNKNOWN"); break;
+    }
+    if (node->args)
+    {
+        for (int i = 0; node->args[i] != NULL; i++)
+        {
+            if (i > 0) fprintf(stream, " "); // Add space between arguments
+            print_escaped(stream, node->args[i]);
+        }
+    }
+    fprintf(stream, "\"];\n");
+
+    // Recursively print left and right children
+    if (node->left != NULL)
+    {
+        fprintf(stream, "\"%p\" -> \"%p\" [label=\"L\"];\n", (void*)node, (void*)node->left);
+        print_ast_dot(node->left, stream);
+    }
+    if (node->right != NULL)
+    {
+        fprintf(stream, "\"%p\" -> \"%p\" [label=\"R\"];\n", (void*)node, (void*)node->right);
+        print_ast_dot(node->right, stream);
+    }
+}
+void generate_ast_diagram(t_tree *root)
+
+{
+
+    FILE *stream = fopen("ast.dot", "w");
+
+    if (stream == NULL)
+
+	{
+
+        perror("fopen");
+
+        return;
+
+    }
+
+
+
+    fprintf(stream, "digraph AST {\n");
+
+    print_ast_dot(root, stream);
+
+    fprintf(stream, "}\n");
+
+	fclose(stream);
+
 }

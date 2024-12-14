@@ -68,23 +68,22 @@ int	main(int ac, char **av, char **env)
 	evv = NULL;
 	evv = ft_initial_env(evv, env);
 	int i = 0;
-	while (i < 1)
+	while (1)
 	{
 		line = readline("minishell % >>>>>    ");
 		if (ft_qt(line) == 0)
 			printf("syntax error\n");
 		tok = ft_splitix(line);
-		char **ptr = tok;
 		sir = ft_init_token_node(tok);
 		tmp = sir;
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
 		tree = parse_tokens(&tmp);
-		print_tree(tree, 0);
-		ft_lstclear(&sir);
-		free_tree(tree);
+		//   generate_ast_diagram(tree);
+		// ft_lstclear(&sir);
+		// free_tree(tree);
 		i++;
 	}
-	atexit(ll);
+	// atexit(ll);
 	exit(0);
 }

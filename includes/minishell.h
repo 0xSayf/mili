@@ -23,14 +23,13 @@
 
 enum					data_type
 {
-	STRING,             // N 0
-	CMD,                // N 1
-	PIPE,               // N 2
-	FILESS,             // N 3
-	REDERECTION_INPUT,  // N 4 <
-	REDERECTION_OUTPUT, // N 5 >
-	HERDOC,             // N 6    <<
-	APPEND_REDIRECT     // N 7 >>
+	CMD,                // N 0
+	PIPE,               // N 1
+	FILESS,             // N 2
+	REDERECTION_INPUT,  // N 3 <
+	REDERECTION_OUTPUT, // N 4 >
+	HERDOC,             // N 5    <<
+	APPEND_REDIRECT     // N 6 >>
 };
 
 typedef struct env
@@ -99,4 +98,5 @@ t_env					*ft_creat_env(char *content);
 t_env					*ft_initial_env(t_env *env, char **environment);
 t_token					*ft_creat_node(char *content);
 t_token					*ft_init_token_node(char **token);
+void generate_ast_diagram(t_tree *root);
 #endif

@@ -17,7 +17,7 @@ t_tree	*parse_command(t_token **tokens)
 	t_tree	*command_node;
 	int		arg_count;
 
-	command_node = new_tree_node((*tokens)->typ_e);
+	command_node = new_tree_node(CMD);
 	arg_count = count_command_arguments(*tokens);
 	command_node->args = malloc(sizeof(char *) * (arg_count + 1));
 	if (!command_node->args)
@@ -57,13 +57,13 @@ t_tree	*parse_redirection(t_token **tokens)
 	if (!*tokens)
 		return (NULL);
 	tmp = *tokens;
-	if ((*tokens)->typ_e == REDERECTION_INPUT && (*tokens)->typ_e == HERDOC)
+	if ((*tokens)->typ_e >= REDERECTION_INPUT && (*tokens)->typ_e <= HERDOC)
 		return (create_and_link_redirection(tokens, tmp));
 	while (*tokens && (*tokens)->next)
 	{
 		next_token = (*tokens)->next;
-		if ((*tokens)->next->typ_e == REDERECTION_INPUT
-			&& (*tokens)->next->typ_e == HERDOC)
+		if ((*tokens)->next->typ_e >= REDERECTION_INPUT
+			&& (*tokens)->next->typ_e <= HERDOC)
 		{
 			redirect_node = new_tree_node((*tokens)->next->typ_e);
 			(*tokens)->next = next_token->next->next;

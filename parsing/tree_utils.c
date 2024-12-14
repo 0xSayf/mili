@@ -33,7 +33,7 @@ void	free_tree(t_tree *node)
 	i = 0;
 	if (!node)
 		return ;
-	if (node->type == STRING && node->args)
+	if (node->type == CMD && node->args)
 	{
 		while (node->args && node->args[i])
 		{
@@ -65,7 +65,7 @@ int	count_command_arguments(t_token *current)
 	int	arg_count;
 
 	arg_count = 0;
-	while (current && current->typ_e == STRING)
+	while (current && current->typ_e == CMD)
 	{
 		arg_count++;
 		current = current->next;
@@ -85,8 +85,8 @@ void	fill_command_arguments(t_tree *command_node, t_token **tokens,
 		command_node->args[i] = ft_strdup((*tokens)->string);
 		tmp = *tokens;
 		*tokens = (*tokens)->next;
-		// free(tmp->string);
-		// free(tmp);
+		free(tmp->string);
+		free(tmp);
 		i++;
 	}
 	command_node->args[arg_count] = NULL;
