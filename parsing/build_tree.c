@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:28:23 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/14 17:39:57 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/14 17:43:39 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ t_tree	*parse_redirection(t_token **tokens)
 	if (!*tokens)
 		return (NULL);
 	tmp = *tokens;
-	if ((*tokens)->typ_e >= REDERECTION_INPUT && (*tokens)->typ_e <= HERDOC)
+	if ((*tokens)->typ_e == REDERECTION_INPUT && (*tokens)->typ_e == HERDOC)
 		return (create_and_link_redirection(tokens, tmp));
 	while (*tokens && (*tokens)->next)
 	{
 		next_token = (*tokens)->next;
-		if ((*tokens)->next->typ_e >= REDERECTION_INPUT
-			&& (*tokens)->next->typ_e <= HERDOC)
+		if ((*tokens)->next->typ_e == REDERECTION_INPUT
+			&& (*tokens)->next->typ_e == HERDOC)
 		{
 			redirect_node = new_tree_node((*tokens)->next->typ_e);
 			(*tokens)->next = next_token->next->next;
