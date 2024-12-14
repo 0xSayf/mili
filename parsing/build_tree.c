@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:28:23 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/13 20:30:46 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/14 17:39:57 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_tree	*parse_command(t_token **tokens)
 	t_tree	*command_node;
 	int		arg_count;
 
-	command_node = new_tree_node(STRING);
+	command_node = new_tree_node((*tokens)->typ_e);
 	arg_count = count_command_arguments(*tokens);
 	command_node->args = malloc(sizeof(char *) * (arg_count + 1));
 	if (!command_node->args)
