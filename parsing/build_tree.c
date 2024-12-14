@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:28:23 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/14 17:43:39 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/14 18:07:35 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,27 +76,27 @@ t_tree	*parse_redirection(t_token **tokens)
 	return (parse_command(&tmp));
 }
 
-t_tree	*parse_pipeline(t_token **tokens)
+t_tree	*parse_pipeline(t_token **token)
 {
 	t_token	*tmp;
 	t_token	*next_token;
 	t_tree	*pipe_node;
 
-	tmp = *tokens;
-	while (*tokens && (*tokens)->next)
+	tmp = *token;
+	while (*token && (*token)->next)
 	{
-		next_token = (*tokens)->next;
-		if ((*tokens)->next->typ_e == PIPE)
+		next_token = (*token)->next;
+		if ((*token)->next->typ_e == PIPE)
 		{
-			pipe_node = new_tree_node(PIPE);
-			(*tokens)->next = NULL;
+			pipe_node = new_tree_node((*token)->next->typ_e);
+			(*token)->next = NULL;
 			pipe_node->left = parse_redirection(&tmp);
 			pipe_node->right = parse_pipeline(&(next_token->next));
 			// free(next_token->string);
 			free(next_token);
 			return (pipe_node);
 		}
-		*tokens = next_token;
+		*token = next_token;
 	}
 	return (parse_redirection(&tmp));
 }
