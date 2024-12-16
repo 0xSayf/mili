@@ -16,12 +16,17 @@ enum data_type	ft_type(t_token *type, char **env)
 {
 	int	i;
 	int	fd;
+	char *path;
 
 	i = 0;
-	// while (ft_strnstr(env[i], "PATH", 4) == NULL)
-	// 	i++;
-	// if (find_path(type->string, env[i]) == 1)
-	// 	return (CMD);
+	while (ft_strnstr(env[i], "PATH", 4) == NULL)
+		i++;
+	path = find_path(type->string, env[i]);
+	if (path)
+	{
+		type->path = path;
+		return (CMD);
+	}
 	if ((fd = open(type->string, O_RDONLY, 0777)) != -1)
 	{
 		close(fd);
@@ -41,10 +46,10 @@ enum data_type	ft_type(t_token *type, char **env)
 			return (APPEND_REDIRECT);
 		return (REDERECTION_OUTPUT);
 	}
-	return (CMD);
+	return (STRING);
 }
 
-int	find_path(char *av, char *evp)
+char   	*find_path(char *av, char *evp)
 {
 	char	**paths;
 	char	*ret;
@@ -60,17 +65,16 @@ int	find_path(char *av, char *evp)
 		ret = ft_strjoin(ret, av);
 		if (access(ret, F_OK && X_OK) == 0)
 		{
-			free(ret);
 			while (paths[i++])
 				free(paths[i]);
 			free(paths);
-			return (1);
+			return (ret);
 		}
 		i++;
 		free(ret);
 	}
 	free(paths);
-	return (0);
+	return (NULL);
 }
 
 int	ft_qt(char *line)

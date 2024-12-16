@@ -17,19 +17,22 @@
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <stdio.h>
+# include <sys/wait.h>
 # include <stdlib.h>
 # include <string.h>
+#include <stdbool.h>
 # include <unistd.h>
 
 enum					data_type
 {
-	CMD,                // N 0
-	PIPE,               // N 1
-	FILESS,             // N 2
-	REDERECTION_INPUT,  // N 3 <
-	REDERECTION_OUTPUT, // N 4 >
-	HERDOC,             // N 5    <<
-	APPEND_REDIRECT     // N 6 >>
+	STRING,				// N 0
+	CMD,                // N 1
+	PIPE,               // N 2
+	FILESS,             // N 3
+	REDERECTION_INPUT,  // N 4 <
+	REDERECTION_OUTPUT, // N 5 >
+	HERDOC,             // N 6    <<
+	APPEND_REDIRECT     // N 7 >>
 };
 
 typedef struct env
@@ -43,18 +46,20 @@ typedef struct t_minishell
 {
 	char				*string;
 	enum data_type		typ_e;
+	char				*path;
 	struct t_minishell	*next;
 }						t_token;
 
-typedef struct t_tree
+typedef struct t_cmd
 {
-	enum data_type		type;
+	char 				*cmd;
+	char 				*path;
+	int 				num_args;
 	char				**args;
-	int					file;
-	struct t_tree		*left;
-	struct t_tree		*right;
+	bool				pipe;
+	struct t_cmd		*next;
 
-}						t_tree;
+}						t_cmd;
 
 char					**ft_split(char const *s, char c);
 int						ft_qt(char *line);
@@ -67,7 +72,7 @@ int						ft_counter(char const *str, char c);
 int						ft_count(char const *str, char c);
 char					*ft_strnstr(const char *hay, const char *need,
 							size_t len);
-int						find_path(char *av, char *evp);
+char					*find_path(char *av, char *evp);
 char					*ft_strjoin(char *s1, char const *s2);
 void					*ft_memcpy(void *dst, const void *src, size_t n);
 void					freeing(char **str);
@@ -80,23 +85,12 @@ void					ft_expand(char **line, t_env *env);
 void					ft_go_del(t_env **env, char *line);
 int						finder(t_env *env, char *line);
 int						find(t_env *env, char *line);
-void					free_tree(t_tree *node);
 int						count_command_arguments(t_token *current);
-void					fill_command_arguments(t_tree *command_node,
-							t_token **tokens, int arg_count);
-void					print_tree(t_tree *node, int depth);
 enum data_type			ft_type(t_token *type, char **env);
-t_tree					*parse_tokens(t_token **tokens);
-t_tree					*create_and_link_redirection(t_token **tokens,
-							t_token *tmp);
-t_tree					*parse_pipeline(t_token **tokens);
-t_tree					*parse_redirection(t_token **tokens);
-t_tree					*create_file_node(t_token *token);
-t_tree					*parse_command(t_token **tokens);
-t_tree					*new_tree_node(enum data_type type);
 t_env					*ft_creat_env(char *content);
 t_env					*ft_initial_env(t_env *env, char **environment);
 t_token					*ft_creat_node(char *content);
 t_token					*ft_init_token_node(char **token);
-void generate_ast_diagram(t_tree *root);
+t_cmd   *ft_build_nodes(t_token *token);
+t_token *find_pipe(t_token *find);
 #endif

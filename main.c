@@ -51,14 +51,9 @@ int	ft_geave_type(t_token *type, char **env)
 	}
 	return (1);
 }
-void	ll(void)
-{
-	system("leaks -q minishell");
-}
 
 int	main(int ac, char **av, char **env)
 {
-	t_tree *tree;
 	t_token *sir;
 	t_env *evv;
 	t_token *tmp;
@@ -67,7 +62,6 @@ int	main(int ac, char **av, char **env)
 
 	evv = NULL;
 	evv = ft_initial_env(evv, env);
-	int i = 0;
 	while (1)
 	{
 		line = readline("minishell % >>>>>    ");
@@ -75,15 +69,13 @@ int	main(int ac, char **av, char **env)
 			printf("syntax error\n");
 		tok = ft_splitix(line);
 		sir = ft_init_token_node(tok);
-		tmp = sir;
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
-		tree = parse_tokens(&tmp);
-		//   generate_ast_diagram(tree);
-		// ft_lstclear(&sir);
-		// free_tree(tree);
-		i++;
+		t_cmd *cmd = ft_build_nodes(sir);
+		while (cmd)
+		{
+			printf("%s\n", cmd->cmd);
+			cmd = cmd->next;
+		}
 	}
-	// atexit(ll);
-	exit(0);
 }

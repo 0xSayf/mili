@@ -20,6 +20,7 @@ t_token	*ft_creat_node(char *content)
 	if (!new)
 		return (NULL);
 	new->string = content;
+	new->path = NULL;
 	new->next = NULL;
 	return (new);
 }
