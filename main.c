@@ -76,8 +76,8 @@ int	main(int ac, char **av, char **env)
 		while (cmd)
 		{
    
-   			 if (cmd->cmd != NULL)
-        		printf("%s\n", cmd->cmd);
+   			 if (cmd->path != NULL)
+        		printf("%s\n", cmd->path);
    			 cmd = cmd->next;
 		}
 	}

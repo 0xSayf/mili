@@ -1,6 +1,6 @@
 #include "../includes/minishell.h"
 
-
+// char    
 int ft_count_args(t_token *start , t_token *end)
 {
     t_token *tmp;
@@ -22,7 +22,6 @@ int ft_count_args(t_token *start , t_token *end)
 t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
 {
     t_cmd *new;
-    t_cmd *find;
 
     if(!start)
         return NULL;
@@ -39,10 +38,10 @@ t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
         new->cmd = NULL;
     new->num_args = ft_count_args(start, end);
     new->args = malloc(sizeof(char*) * (new->num_args + 1));
+    // new->args = ft_the_args(new->args,start,end,new->num_args);
     new->path = start->path; 
     new->next = NULL;
     return new;
-
 }
 
 t_cmd   *ft_build_nodes(t_token *token)
@@ -58,6 +57,7 @@ t_cmd   *ft_build_nodes(t_token *token)
         return NULL;
     cmd = NULL;
     exec = NULL;
+    tmp = token;
     if(!cmd)
     {
         start = token;
