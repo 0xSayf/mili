@@ -75,12 +75,12 @@ int	main(int ac, char **av, char **env)
 		t_cmd *cmd = ft_build_nodes(sir);
 		while (cmd)
 		{
-		int i = 0 ;
-			while (cmd->args[i])
-			{
-				printf("%s\n", cmd->args[i]);
-				i++;
-			}
+		// int i = 0 ;
+			// while (cmd->args)
+			// {
+				printf("%s\n", cmd->cmd);
+				// i++;
+			// }
    			 cmd = cmd->next;
 		}
 	}

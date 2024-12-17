@@ -12,7 +12,6 @@
 
 #include "../includes/minishell.h"
 
-
 t_token *find_pipe(t_token *find)
 {
     t_token *tmp;
