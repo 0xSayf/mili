@@ -142,7 +142,7 @@ int	ft_syntax(t_token *syntax)
 			printf("Syntax Error : No such file or directory\n");
 			return (0);
 		}
-		else if (tmp->typ_e == PIPE )
+		else if (tmp->typ_e == PIPE && tmp->next->typ_e != CMD)
 		{
 			printf("syntax Error : cmd not found \n");
 			return (0);

@@ -69,13 +69,16 @@ int	main(int ac, char **av, char **env)
 			printf("syntax error\n");
 		tok = ft_splitix(line);
 		sir = ft_init_token_node(tok);
+		tmp = sir;
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
 		t_cmd *cmd = ft_build_nodes(sir);
 		while (cmd)
 		{
-			printf("%s\n", cmd->cmd);
-			cmd = cmd->next;
+   
+   			 if (cmd->cmd != NULL)
+        		printf("%s\n", cmd->cmd);
+   			 cmd = cmd->next;
 		}
 	}
 }

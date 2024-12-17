@@ -24,6 +24,8 @@ t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
     t_cmd *new;
     t_cmd *find;
 
+    if(!start)
+        return NULL;
     new = malloc(sizeof(t_cmd));
     if(!new)
         return NULL;
@@ -33,10 +35,13 @@ t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
         new->pipe = true;
     if(start->typ_e == CMD)
         new->cmd = start->string;
+    else
+        new->cmd = NULL;
     new->num_args = ft_count_args(start, end);
     new->args = malloc(sizeof(char*) * (new->num_args + 1));
     new->path = start->path; 
-    new->next = NULL;   
+    new->next = NULL;
+    return new;
 
 }
 
