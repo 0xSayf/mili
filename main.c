@@ -73,12 +73,15 @@ int	main(int ac, char **av, char **env)
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
 		t_cmd *cmd = ft_build_nodes(sir);
-		while (cmd)
-		{
-   
-   			 if (cmd->path != NULL)
-        		printf("%s\n", cmd->path);
-   			 cmd = cmd->next;
-		}
+		// int i = 0 ;
+		// while (cmd)
+		// {
+		// 	while (cmd->args[i])
+		// 	{
+		// 		printf("%s\n", cmd->args[i]);
+		// 		i++;
+		// 	}
+   		// 	 cmd = cmd->next;
+		// }
 	}
 }

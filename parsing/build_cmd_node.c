@@ -1,6 +1,26 @@
 #include "../includes/minishell.h"
 
-// char    
+char    **ft_the_args(char **ret,t_token *start, int arg)
+{
+    t_token *s;
+    size_t     i;
+
+    if(!ret || !start || !arg)
+        return NULL;
+    s = start;
+    i = 0;
+    while (s && (i < arg) && (s->typ_e != PIPE))
+    {
+        ret[i] = malloc(ft_strlen(s->string) + 1);
+        ret[i][ft_strlen(s->string)] = '\0';
+        ft_memcpy(ret[i], s->string, ft_strlen(s->string) + 1);
+        i++;
+        s = s->next;
+    }
+    ret[i] = NULL;
+    return ret;
+}
+
 int ft_count_args(t_token *start , t_token *end)
 {
     t_token *tmp;
@@ -8,9 +28,10 @@ int ft_count_args(t_token *start , t_token *end)
 
     if(!start)
         return 0;
+    tmp = NULL;
     tmp = start;
     i = 0;
-    while ((tmp < end) && (tmp))
+    while ((tmp) && (tmp->typ_e != PIPE ))
     {
         if(tmp->typ_e == CMD || tmp->typ_e == STRING || tmp->typ_e == FILESS)
             i++;
@@ -37,8 +58,8 @@ t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
     else
         new->cmd = NULL;
     new->num_args = ft_count_args(start, end);
-    new->args = malloc(sizeof(char*) * (new->num_args + 1));
-    // new->args = ft_the_args(new->args,start,end,new->num_args);
+    new->args = malloc(sizeof(char *) * (new->num_args + 1));
+    new->args = ft_the_args(new->args,start,new->num_args);
     new->path = start->path; 
     new->next = NULL;
     return new;
