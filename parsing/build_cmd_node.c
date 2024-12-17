@@ -13,8 +13,11 @@ char    **ft_the_args(char **ret,t_token *start, int arg)
     {
         ret[i] = malloc(ft_strlen(s->string) + 1);
         ret[i][ft_strlen(s->string)] = '\0';
-        ft_memcpy(ret[i], s->string, ft_strlen(s->string) + 1);
-        i++;
+        if(s->typ_e == CMD || s->typ_e == STRING)
+        {
+            ft_memcpy(ret[i], s->string, ft_strlen(s->string) + 1);
+            i++;
+        }
         s = s->next;
     }
     ret[i] = NULL;
@@ -38,31 +41,6 @@ int ft_count_args(t_token *start , t_token *end)
         tmp = tmp->next;
     }
     return i;
-}
-
-t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
-{
-    t_cmd *new;
-
-    if(!start)
-        return NULL;
-    new = malloc(sizeof(t_cmd));
-    if(!new)
-        return NULL;
-    if (!k)
-        new->pipe = false;
-    else
-        new->pipe = true;
-    if(start->typ_e == CMD)
-        new->cmd = start->string;
-    else
-        new->cmd = NULL;
-    new->num_args = ft_count_args(start, end);
-    new->args = malloc(sizeof(char *) * (new->num_args + 1));
-    new->args = ft_the_args(new->args,start,new->num_args);
-    new->path = start->path; 
-    new->next = NULL;
-    return new;
 }
 
 t_cmd   *ft_build_nodes(t_token *token)

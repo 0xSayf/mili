@@ -50,6 +50,13 @@ typedef struct t_minishell
 	struct t_minishell	*next;
 }						t_token;
 
+typedef struct t_herdoc
+{
+	char *delimiter;
+	char *file_output;
+	struct t_herdoc *next;
+}						t_herdoc;
+
 typedef struct t_cmd
 {
 	char 				*cmd;
@@ -57,6 +64,10 @@ typedef struct t_cmd
 	int 				num_args;
 	char				**args;
 	bool				pipe;
+	char				*file_input;
+	char				*file_output;
+	char				*file_append;
+	t_herdoc			*t_herdoc;
 	struct t_cmd		*next;
 
 }						t_cmd;
@@ -93,4 +104,6 @@ t_token					*ft_creat_node(char *content);
 t_token					*ft_init_token_node(char **token);
 t_cmd   *ft_build_nodes(t_token *token);
 t_token *find_pipe(t_token *find);
+t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k);
+
 #endif
