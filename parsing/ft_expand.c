@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:23:05 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/03 18:38:20 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:38:15 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,5 @@ void	ft_expand(char **line, t_env *env)
 		}
 		i++;
 	}
-	// t_env *tt;
-	// tt = env;
-	// while (tt)
-	// {
-	//     printf("%s\n", tt->var);
-	//     tt = tt->next;
-	// }
+	
 }

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 15:52:40 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:57:16 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct t_herdoc
 typedef struct s_red
 {
 	char *red_out;
+	char *red_input;
 	char *red_append;
 	enum data_type		typix;
 	struct s_red *next; 

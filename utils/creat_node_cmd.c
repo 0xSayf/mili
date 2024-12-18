@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:57:46 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 16:03:22 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:00:25 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,19 @@ t_red   *ft_creat_redirection_node(t_token *token, enum data_type typ_e)
     {
         red->red_out = token->string;
         red->red_append = NULL;
+        red->red_input = NULL;
     }
     else if(typ_e == APPEND_REDIRECT)
     {
         red->red_append = token->string;
         red->red_out = NULL;
+        red->red_input = NULL;
+    }
+    else if(typ_e == REDERECTION_INPUT)
+    {
+        red->red_append = NULL;
+        red->red_out = NULL;
+        red->red_input = token->string;
     }
     red->next = NULL;
     return red;

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:55:51 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 17:37:21 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:57:51 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_red    *ft_check_redirection(t_cmd  *cmd, t_token *token)
     {
         if(token->typ_e == PIPE)
             break;
-        if(token->typ_e == REDERECTION_OUTPUT || token->typ_e == APPEND_REDIRECT)
+        if(token->typ_e == REDERECTION_OUTPUT || token->typ_e == APPEND_REDIRECT || token->typ_e == REDERECTION_INPUT)
         {
             if(!red)
             {
