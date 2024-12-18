@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 14:02:12 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:52:40 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ char					*find_path(char *av, char *evp);
 char					*ft_strjoin(char *s1, char const *s2);
 void					*ft_memcpy(void *dst, const void *src, size_t n);
 void					freeing(char **str);
+void    *ft_handle_p_h_a_re(t_cmd *cmd,t_token *tmp);
 int						ft_strcmp(char *s1, char *s2);
 void					del(char *string);
 void					ft_lstclear(t_token **lst);
@@ -112,6 +113,7 @@ t_env					*ft_creat_env(char *content);
 t_env					*ft_initial_env(t_env *env, char **environment);
 t_token					*ft_creat_node(char *content);
 t_token					*ft_init_token_node(char **token);
+t_red   *ft_creat_redirection_node(t_token *token, enum data_type typ_e);
 t_cmd   *ft_build_nodes(t_token *token);
 t_token *find_pipe(t_token *find);
 t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k);

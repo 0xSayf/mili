@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:57:46 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 14:01:55 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:03:22 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,26 @@ t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
     new->redirection = NULL;
     new->next = NULL;
     return new;
+}
+
+t_red   *ft_creat_redirection_node(t_token *token, enum data_type typ_e)
+{
+    t_red   *red;
+
+    red = malloc(sizeof(t_red));
+    if(!red)
+        return NULL;
+    red->typix = typ_e;
+    if(typ_e == REDERECTION_OUTPUT)
+    {
+        red->red_out = token->string;
+        red->red_append = NULL;
+    }
+    else if(typ_e == APPEND_REDIRECT)
+    {
+        red->red_append = token->string;
+        red->red_out = NULL;
+    }
+    red->next = NULL;
+    return red;
 }
