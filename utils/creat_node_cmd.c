@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:57:46 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 10:56:27 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:01:55 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,9 @@ t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
     new->args = malloc(sizeof(char *) * (new->num_args + 1));
     new->args = ft_the_args(new->args,start,new->num_args);
     new->path = start->path; 
-    new->file_input = NULL;
-    new->file_output = NULL;
-    new->file_append = NULL;    
-    new->t_herdoc = NULL;
+    new->file_input = NULL; 
+    new->herdoc = NULL;
+    new->redirection = NULL;
     new->next = NULL;
     return new;
 }

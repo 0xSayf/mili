@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:38:37 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/12 20:21:31 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:03:13 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ t_env	*ft_creat_env(char *content)
 	return (new);
 }
 
-void	del(char *string)
-{
-	free(string);
-}
-
 void	ft_lstclear(t_token **lst)
 {
 	t_token	*curr;
@@ -54,7 +49,6 @@ void	ft_lstclear(t_token **lst)
 	while (curr)
 	{
 		ne = curr->next;
-		// (*del)(curr->string);
 		free(curr);
 		curr = ne;
 	}

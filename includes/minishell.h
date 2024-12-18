@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 11:01:17 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:02:12 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ typedef struct t_herdoc
 	struct t_herdoc *next;
 }						t_herdoc;
 
+typedef struct s_red
+{
+	char *red_out;
+	char *red_append;
+	enum data_type		typix;
+	struct s_red *next; 
+} 				t_red;
+
 typedef struct t_cmd
 {
 	char 				*cmd;
@@ -65,9 +73,8 @@ typedef struct t_cmd
 	char				**args;
 	bool				pipe;
 	char				*file_input;
-	char				*file_output;
-	char				*file_append;
-	t_herdoc			*t_herdoc;
+	t_red				*redirection;
+	t_herdoc			*herdoc;
 	struct t_cmd		*next;
 
 }						t_cmd;
