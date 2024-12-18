@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/14 16:51:30 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:54:55 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,16 @@ int	main(int ac, char **av, char **env)
 		ft_geave_type(sir, env);
 		ft_syntax(sir);
 		t_cmd *cmd = ft_build_nodes(sir);
-		while (cmd)
-		{
-		// int i = 0 ;
-			// while (cmd->args)
-			// {
-				printf("%s\n", cmd->cmd);
-				// i++;
-			// }
-   			 cmd = cmd->next;
-		}
+		// execve(cmd->path, cmd->args, NULL);
+		// while (cmd)
+		// {
+		// // int i = 0 ;
+		// 	// while (cmd->args)
+		// 	// {
+		// 		printf("%s\n", cmd->cmd);
+		// 		// i++;
+		// 	// }
+   		// 	 cmd = cmd->next;
+		// }
 	}
 }
