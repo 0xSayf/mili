@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   creat_node_tree.c                                  :+:      :+:    :+:   */
+/*   creat_node_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:57:46 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/24 21:30:23 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:56:27 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,30 @@ t_token *find_pipe(t_token *find)
         tmp = tmp->next;
     }
     return NULL;
+}
+
+char    **ft_the_args(char **ret,t_token *start, int arg)
+{
+    t_token *s;
+    size_t     i;
+
+    if(!ret || !start || !arg)
+        return NULL;
+    s = start;
+    i = 0;
+    while (s && (i < arg) && (s->typ_e != PIPE))
+    {
+        ret[i] = malloc(ft_strlen(s->string) + 1);
+        ret[i][ft_strlen(s->string)] = '\0';
+        if(s->typ_e == CMD || s->typ_e == STRING)
+        {
+            ft_memcpy(ret[i], s->string, ft_strlen(s->string) + 1);
+            i++;
+        }
+        s = s->next;
+    }
+    ret[i] = NULL;
+    return ret;
 }
 
 t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k)
