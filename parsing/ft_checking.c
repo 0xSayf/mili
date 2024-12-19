@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 12:30:40 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:13:50 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ enum data_type	ft_type(t_token *type, char **env)
 			return (APPEND_REDIRECT);
 		return (REDERECTION_OUTPUT);
 	}
+	else if (ft_strcmp(type->string, "export") == 0)
+		return EXPORT;
+	else if (ft_strcmp(type->string , "unset") == 0)
+		return UNSET;
 	return (STRING);
 }
 
@@ -108,6 +112,20 @@ int	ft_qt(char *line)
 	return (1);
 }
 
+int	ft_check_dollar(t_token *token)
+{
+	int i;
+	char *str;
+	
+	if(!token)
+		return 1;
+	str = token->string;
+	i = 0;
+	if(str[i] != '$' || (str[i] <= '0' || str[i] >= '9'))
+		return 0;
+	return 1;
+}
+
 int	ft_syntax(t_token *syntax)
 {
 	int i;
@@ -118,31 +136,34 @@ int	ft_syntax(t_token *syntax)
 		return (0);
 	tmp = syntax;
 	i = 0;
-	if (ft_strcmp(tmp->string, "export") == 0)
-		return (0);
-	else if (!i && *(tmp->string) == '|')
+	if (!i && *(tmp->string) == '|')
 	{
 		printf("syntax error\n");
 		return (0);
 	}
-	else if (!i && tmp->typ_e != CMD)
+	else if (!i && (tmp->typ_e != CMD && (ft_check_builtins(tmp) == 0)))
 	{
-		printf("Syntax Error : cmd not found \n");
+		printf("Syntax Error : cmd gg not found \n");
 		return (0);
 	}
-	while (tmp)
+	while (tmp )
 	{
 		if (tmp->typ_e == PIPE && !tmp->next)
 		{
 			printf("syntax errors\n");
 			return (0);
 		}
-		else if ((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= APPEND_REDIRECT)&& !tmp->next)
+		else if((tmp->typ_e == EXPORT || tmp->typ_e == UNSET ) && ft_check_dollar(tmp->next) == 0)
+		{
+			printf("syntax errors\n");
+			return (0);
+		}
+		else if ((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= APPEND_REDIRECT) && !tmp->next)
 		{
 			printf("Syntax Error : No such file or directory\n");
 			return (0);
 		}
-		else if (tmp->typ_e == PIPE && tmp->next->typ_e != CMD)
+		else if (tmp->typ_e == PIPE && (tmp->next->typ_e != CMD && !ft_check_builtins(tmp->next)))
 		{
 			printf("syntax Error : cmd not found \n");
 			return (0);
