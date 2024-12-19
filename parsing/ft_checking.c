@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 14:13:50 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:14:40 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,11 @@ int	ft_check_dollar(t_token *token)
 		return 1;
 	str = token->string;
 	i = 0;
-	if(str[i] != '$' || (str[i] <= '0' || str[i] >= '9'))
-		return 0;
+	if(str[i] < 'a' || str[i] > 'z')
+	{
+		if(str[i] != '$')
+			return 0;
+	}
 	return 1;
 }
 
@@ -153,9 +156,9 @@ int	ft_syntax(t_token *syntax)
 			printf("syntax errors\n");
 			return (0);
 		}
-		else if((tmp->typ_e == EXPORT || tmp->typ_e == UNSET ) && ft_check_dollar(tmp->next) == 0)
+		else if((tmp->typ_e == EXPORT || tmp->typ_e == UNSET ) && tmp->next && (ft_check_dollar(tmp->next) == 0))
 		{
-			printf("syntax errors\n");
+			printf("syntax  gg errors\n");
 			return (0);
 		}
 		else if ((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= APPEND_REDIRECT) && !tmp->next)
