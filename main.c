@@ -6,12 +6,15 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 20:25:01 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:26:54 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
-
+void ll()
+{
+	system("leaks -q minishell");
+}
 int	main(int ac, char **av, char **env)
 {
 	t_token *sir;
@@ -38,12 +41,14 @@ int	main(int ac, char **av, char **env)
 		// execve(cmd->path, cmd->args, NULL);
 		while (cmd)
 		{
-			while (cmd->redirection)
+			while (cmd->herdoc)
 			{
-				printf("%s\n", cmd->redirection->red_append);
-				cmd->redirection = cmd->redirection->next;
+				printf("%s\n", cmd->herdoc->delimiter);
+				cmd->herdoc = cmd->herdoc->next;
 			}
+			printf("--------------------------------------\n");
    			cmd = cmd->next;
 		}
+		// atexit(ll);
 	}
 }

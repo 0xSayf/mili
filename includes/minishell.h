@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 20:25:26 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:20:13 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ t_red   *ft_creat_redirection_node(t_token *token, enum data_type typ_e);
 t_cmd   *ft_build_nodes(t_token *token);
 t_token *find_pipe(t_token *find);
 t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k);
+t_cmd   *ft_handle_herdoc(t_cmd *cmd, t_token   *token);
 t_cmd   *ft_handle_herdoc(t_cmd *cmd, t_token   *token);
 
 #endif
