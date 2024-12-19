@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:48:31 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/12 18:44:09 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:27:42 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_env	*ft_initial_env(t_env *env, char **environment)
 	int i;
 
 	tmp = NULL;
+	env = NULL;
 	i = 0;
 	if (!env)
 	{

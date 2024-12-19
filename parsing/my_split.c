@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/13 17:58:39 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:31:35 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,12 @@ char	**ft_splitix(char *line)
 
 	if (!line)
 		return (NULL);
+	if (ft_qt(line) == 0)
+	{
+		printf("syntax error\n");
+		free(line);
+		return NULL;
+	}
 	word = ft_counter(line, 32);
 	retu = malloc(sizeof(char *) * (word + 1));
 	retu = ft_ret(line, retu, 32, word);

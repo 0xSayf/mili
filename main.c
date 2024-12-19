@@ -6,31 +6,23 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 12:32:33 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:34:11 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
-void ll()
-{
-	system("leaks -q minishell");
-}
+
 int	main(int ac, char **av, char **env)
 {
 	t_token *sir;
 	t_env *evv;
 	t_token *tmp;
-	char *line;
 	char **tok;
 
-	evv = NULL;
 	evv = ft_initial_env(evv, env);
 	while (1)
 	{
-		line = readline("minishell % >>>>>    ");
-		if (ft_qt(line) == 0)
-			printf("syntax error\n");
-		tok = ft_splitix(line);
+		tok = ft_splitix(readline("minishell % >>>>>    "));
 		sir = ft_init_token_node(tok);
 		tmp = sir;
 		ft_geave_type(sir, env);
@@ -41,17 +33,5 @@ int	main(int ac, char **av, char **env)
 			cmd = ft_handle_p_h_a_re(cmd,tmp);
 			cmd = ft_handle_herdoc(cmd,tmp);
 		}
-		// execve(cmd->path, cmd->args, NULL);
-		// while (cmd)
-		// {
-		// 	while (cmd->herdoc)
-		// 	{
-		// 		printf("%s\n", cmd->herdoc->delimiter);
-		// 		cmd->herdoc = cmd->herdoc->next;
-		// 	}
-		// 	printf("--------------------------------------\n");
-   		// 	cmd = cmd->next;
-		// }
-		// atexit(ll);
 	}
 }
