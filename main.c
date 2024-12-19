@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 12:26:54 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:32:33 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,24 @@ int	main(int ac, char **av, char **env)
 		sir = ft_init_token_node(tok);
 		tmp = sir;
 		ft_geave_type(sir, env);
-		ft_syntax(sir);
-		t_cmd *cmd = ft_build_nodes(sir);
-		cmd = ft_handle_p_h_a_re(cmd,tmp);
-		cmd = ft_handle_herdoc(cmd,tmp);
-		// execve(cmd->path, cmd->args, NULL);
-		while (cmd)
+		int c = ft_syntax(sir);
+		if(c == 1)
 		{
-			while (cmd->herdoc)
-			{
-				printf("%s\n", cmd->herdoc->delimiter);
-				cmd->herdoc = cmd->herdoc->next;
-			}
-			printf("--------------------------------------\n");
-   			cmd = cmd->next;
+			t_cmd *cmd = ft_build_nodes(sir);
+			cmd = ft_handle_p_h_a_re(cmd,tmp);
+			cmd = ft_handle_herdoc(cmd,tmp);
 		}
+		// execve(cmd->path, cmd->args, NULL);
+		// while (cmd)
+		// {
+		// 	while (cmd->herdoc)
+		// 	{
+		// 		printf("%s\n", cmd->herdoc->delimiter);
+		// 		cmd->herdoc = cmd->herdoc->next;
+		// 	}
+		// 	printf("--------------------------------------\n");
+   		// 	cmd = cmd->next;
+		// }
 		// atexit(ll);
 	}
 }

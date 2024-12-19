@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/13 18:35:05 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:30:40 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int	ft_syntax(t_token *syntax)
 			printf("syntax errors\n");
 			return (0);
 		}
-		else if (tmp->typ_e == REDERECTION_INPUT && !tmp->next)
+		else if ((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= APPEND_REDIRECT)&& !tmp->next)
 		{
 			printf("Syntax Error : No such file or directory\n");
 			return (0);
