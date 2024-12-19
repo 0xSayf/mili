@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:55:51 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 18:57:51 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:17:20 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_red    *ft_check_redirection(t_cmd  *cmd, t_token *token)
             }
             else
             {
-            help->next = ft_creat_redirection_node(token->next,token->typ_e);
-            help = help->next;
+                help->next = ft_creat_redirection_node(token->next,token->typ_e);
+                help = help->next;
             }
         }
         token = token->next;
