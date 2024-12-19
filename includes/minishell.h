@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 14:01:51 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:51:11 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/wait.h>
 # include <stdlib.h>
 # include <string.h>
-#include <stdbool.h>
+# include <stdbool.h>
 # include <unistd.h>
 
 enum					data_type
@@ -77,7 +77,6 @@ typedef struct t_cmd
 	t_red				*redirection;
 	t_herdoc			*herdoc;
 	struct t_cmd		*next;
-
 }						t_cmd;
 
 char					**ft_split(char const *s, char c);
@@ -87,7 +86,7 @@ char					*ft_strdup(const char *s1);
 size_t					ft_strlen(const char *s);
 int						ft_syntax(t_token *syntax);
 char					**ft_splitix(char *line);
-int 	ft_check_builtins(t_token *token);
+int 				ft_check_builtins(t_token *token);
 int						ft_counter(char const *str, char c);
 int						ft_count(char const *str, char c);
 char					*ft_strnstr(const char *hay, const char *need,
