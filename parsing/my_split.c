@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 16:31:35 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:03:24 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ char	**ft_splitix(char *line)
 
 	if (!line)
 		return (NULL);
+	add_history(line);
 	if (ft_qt(line) == 0)
 	{
 		printf("syntax error\n");

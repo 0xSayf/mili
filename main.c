@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/20 16:16:02 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:22:41 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av, char **env)
 	
 	evv = ft_initial_env(evv, env);
 	int i = 0;
-	while (i < 5)
+	while (1)
 	{
 		tok = ft_splitix(readline("minishell % >>>>>    "));
 		sir = ft_init_token_node(tok);
