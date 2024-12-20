@@ -46,5 +46,6 @@ void    *ft_cd(t_env    *env, char  *str)
             perror("No Working Dir");
             return NULL;
         }
+        closedir(dir);
     }
 }
