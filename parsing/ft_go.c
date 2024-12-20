@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:59:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 11:00:35 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:09:32 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_token	*ft_init_token_node(char **token)
 		first = first->next;
 		i++;
 	}
+	freeing(token);
 	return (linked);
 }
 

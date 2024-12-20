@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:36:51 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 12:25:50 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:50:14 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_herdoc    *create_herdoc_node(t_token *token)
     new = malloc(sizeof(t_herdoc));
     if(!new)
         return NULL;
-    new->delimiter = token->string;
+    new->delimiter = ft_strdup(token->string);
     new->next = NULL;
     return new;
 }

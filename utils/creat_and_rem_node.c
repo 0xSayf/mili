@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:38:37 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/18 11:03:13 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:11:15 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_token	*ft_creat_node(char *content)
 	new = (t_token *)malloc(sizeof(t_token));
 	if (!new)
 		return (NULL);
-	new->string = content;
+	new->string = ft_strdup(content);
 	new->path = NULL;
 	new->next = NULL;
 	return (new);
@@ -49,6 +49,9 @@ void	ft_lstclear(t_token **lst)
 	while (curr)
 	{
 		ne = curr->next;
+		free(curr->string);
+		if(curr->typ_e == CMD)
+			free(curr->path);
 		free(curr);
 		curr = ne;
 	}
