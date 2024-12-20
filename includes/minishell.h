@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 17:51:11 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:17:05 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <stdbool.h>
 # include <unistd.h>
+#include <limits.h>
 
 enum					data_type
 {
@@ -86,7 +87,7 @@ char					*ft_strdup(const char *s1);
 size_t					ft_strlen(const char *s);
 int						ft_syntax(t_token *syntax);
 char					**ft_splitix(char *line);
-int 				ft_check_builtins(t_token *token);
+int						ft_check_builtins(t_token *token);
 int						ft_counter(char const *str, char c);
 int						ft_count(char const *str, char c);
 char					*ft_strnstr(const char *hay, const char *need,
@@ -95,14 +96,13 @@ char					*find_path(char *av, char *evp);
 char					*ft_strjoin(char *s1, char const *s2);
 void					*ft_memcpy(void *dst, const void *src, size_t n);
 void					freeing(char **str);
-void    *ft_handle_p_h_a_re(t_cmd *cmd,t_token *tmp);
+void    				*ft_handle_p_h_a_re(t_cmd *cmd,t_token *tmp);
 int						ft_strcmp(char *s1, char *s2);
 void					del(char *string);
 void					ft_lstclear(t_token **lst);
 int						ft_geave_type(t_token *type, char **env);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 void					ft_lst_clr(t_env **env);
-void					ft_expand(char **line, t_env *env);
 void					ft_go_del(t_env **env, char *line);
 int						finder(t_env *env, char *line);
 char    				**ft_the_args(char **ret,t_token *start, int arg);
@@ -114,11 +114,13 @@ t_env					*ft_creat_env(char *content);
 t_env					*ft_initial_env(t_env *env, char **environment);
 t_token					*ft_creat_node(char *content);
 t_token					*ft_init_token_node(char **token);
-t_red   *ft_creat_redirection_node(t_token *token, enum data_type typ_e);
-t_cmd   *ft_build_nodes(t_token *token);
-t_token *find_pipe(t_token *find);
-t_cmd   *creat_cmd_node(t_token *start, t_token *end, int k);
-t_cmd   *ft_handle_herdoc(t_cmd *cmd, t_token   *token);
-t_cmd   *ft_handle_herdoc(t_cmd *cmd, t_token   *token);
+t_red   				*ft_creat_redirection_node(t_token *token, enum data_type typ_e);
+t_cmd					*ft_build_nodes(t_token *token);
+t_token					*find_pipe(t_token *find);
+t_cmd					*creat_cmd_node(t_token *start, t_token *end, int k);
+t_cmd					*ft_handle_herdoc(t_cmd *cmd, t_token   *token);
+t_cmd					*ft_handle_herdoc(t_cmd *cmd, t_token   *token);
+void    ft_go_execute(t_cmd    *cmd);
+char    *ft_pwd(void);
 
 #endif

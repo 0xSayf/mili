@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:57:46 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 12:17:09 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/20 13:43:28 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char    **ft_the_args(char **ret,t_token *start, int arg)
     {
         ret[i] = malloc(ft_strlen(s->string) + 1);
         ret[i][ft_strlen(s->string)] = '\0';
-        if(s->typ_e == CMD || s->typ_e == STRING)
+        if(s->typ_e == CMD || s->typ_e == STRING || s->typ_e == FILESS)
         {
             ft_memcpy(ret[i], s->string, ft_strlen(s->string) + 1);
             i++;
