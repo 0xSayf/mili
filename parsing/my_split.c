@@ -126,7 +126,7 @@ char	**ft_splitix(char *line)
 	{
 		printf("syntax error\n");
 		free(line);
-		return NULL;
+		return (NULL);
 	}
 	word = ft_counter(line, 32);
 	retu = malloc(sizeof(char *) * (word + 1));

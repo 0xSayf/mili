@@ -50,7 +50,7 @@ void	ft_lstclear(t_token **lst)
 	{
 		ne = curr->next;
 		free(curr->string);
-		if(curr->typ_e == CMD)
+		if (curr->typ_e == CMD)
 			free(curr->path);
 		free(curr);
 		curr = ne;

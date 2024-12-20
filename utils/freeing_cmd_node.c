@@ -12,18 +12,18 @@
 
 #include "../includes/minishell.h"
 
-void    ft_freeing_cmd_node(t_cmd   *cmd)
+void	ft_freeing_cmd_node(t_cmd *cmd)
 {
-    t_cmd   *tmp;
+	t_cmd *tmp;
 
-    if (!cmd)
-        return;
-    tmp = cmd;
-    while (tmp)
-    {
-        freeing(tmp->args);
-        free(tmp->path);
-        free(tmp->cmd);
-        tmp = tmp->next;
-    }
+	if (!cmd)
+		return ;
+	tmp = cmd;
+	while (tmp)
+	{
+		freeing(tmp->args);
+		free(tmp->path);
+		free(tmp->cmd);
+		tmp = tmp->next;
+	}
 }

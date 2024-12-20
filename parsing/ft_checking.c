@@ -14,9 +14,9 @@
 
 enum data_type	ft_type(t_token *type, char **env)
 {
-	int	i;
-	int	fd;
-	char *path;
+	int		i;
+	int		fd;
+	char	*path;
 
 	i = 0;
 	while (ft_strnstr(env[i], "PATH", 4) == NULL)
@@ -47,13 +47,13 @@ enum data_type	ft_type(t_token *type, char **env)
 		return (REDERECTION_OUTPUT);
 	}
 	else if (ft_strcmp(type->string, "export") == 0)
-		return EXPORT;
-	else if (ft_strcmp(type->string , "unset") == 0)
-		return UNSET;
+		return (EXPORT);
+	else if (ft_strcmp(type->string, "unset") == 0)
+		return (UNSET);
 	return (STRING);
 }
 
-char   	*find_path(char *av, char *evp)
+char	*find_path(char *av, char *evp)
 {
 	char	**paths;
 	char	*ret;
@@ -114,19 +114,19 @@ int	ft_qt(char *line)
 
 int	ft_check_dollar(t_token *token)
 {
-	int i;
-	char *str;
-	
-	if(!token)
-		return 1;
+	int		i;
+	char	*str;
+
+	if (!token)
+		return (1);
 	str = token->string;
 	i = 0;
-	if(str[i] < 'a' || str[i] > 'z')
+	if (str[i] < 'a' || str[i] > 'z')
 	{
-		if(str[i] != '$')
-			return 0;
+		if (str[i] != '$')
+			return (0);
 	}
-	return 1;
+	return (1);
 }
 
 int	ft_syntax(t_token *syntax)
@@ -149,24 +149,27 @@ int	ft_syntax(t_token *syntax)
 		printf("Syntax Error : cmd gg not found \n");
 		return (0);
 	}
-	while (tmp )
+	while (tmp)
 	{
 		if (tmp->typ_e == PIPE && !tmp->next)
 		{
 			printf("syntax errors\n");
 			return (0);
 		}
-		else if((tmp->typ_e == EXPORT || tmp->typ_e == UNSET ) && tmp->next && (ft_check_dollar(tmp->next) == 0))
+		else if ((tmp->typ_e == EXPORT || tmp->typ_e == UNSET) && tmp->next
+			&& (ft_check_dollar(tmp->next) == 0))
 		{
 			printf("syntax  gg errors\n");
 			return (0);
 		}
-		else if ((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= APPEND_REDIRECT) && !tmp->next)
+		else if ((tmp->typ_e >= REDERECTION_INPUT
+				&& tmp->typ_e <= APPEND_REDIRECT) && !tmp->next)
 		{
 			printf("Syntax Error : No such file or directory\n");
 			return (0);
 		}
-		else if (tmp->typ_e == PIPE && (tmp->next->typ_e != CMD && !ft_check_builtins(tmp->next)))
+		else if (tmp->typ_e == PIPE && (tmp->next->typ_e != CMD
+				&& !ft_check_builtins(tmp->next)))
 		{
 			printf("syntax Error : cmd not found \n");
 			return (0);

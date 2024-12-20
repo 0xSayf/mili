@@ -40,7 +40,7 @@ t_token	*ft_init_token_node(char **token)
 
 int	ft_geave_type(t_token *type, char **env)
 {
-	t_token	*tmp;
+	t_token *tmp;
 
 	if (!type || !type->string)
 		return (0);

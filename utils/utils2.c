@@ -62,8 +62,8 @@ int	finder(t_env *env, char *line)
 
 void	ft_go_del(t_env **env, char *line)
 {
-	t_env *tmp;
-	t_env *last;
+	t_env	*tmp;
+	t_env	*last;
 
 	if (!env || !*env)
 		return ;
@@ -78,7 +78,6 @@ void	ft_go_del(t_env **env, char *line)
 	{
 		last = tmp;
 		tmp = tmp->next;
-
 		if (ft_strncmp(tmp->var, line, 2) == 0)
 		{
 			last->next = tmp->next;
@@ -88,13 +87,13 @@ void	ft_go_del(t_env **env, char *line)
 	}
 }
 
-int 	ft_check_builtins(t_token *token)
+int	ft_check_builtins(t_token *token)
 {
 	char *ptr[4];
-	int		i;
-	
-	if(!token)
-		return 0;
+	int i;
+
+	if (!token)
+		return (0);
 	ptr[0] = "exit";
 	ptr[1] = "export";
 	ptr[2] = "unset";
@@ -102,9 +101,9 @@ int 	ft_check_builtins(t_token *token)
 	i = 0;
 	while (ptr[i])
 	{
-		if(ft_strcmp(ptr[i], token->string) == 0)
-			return 1;
+		if (ft_strcmp(ptr[i], token->string) == 0)
+			return (1);
 		i++;
 	}
-	return 0;
+	return (0);
 }
