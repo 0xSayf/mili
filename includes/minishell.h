@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/20 18:48:11 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:47:45 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@
 
 enum					data_type
 {
-	EXPORT,
-	UNSET,
-	STRING,             // N 0
-	CMD,                // N 1
-	PIPE,               // N 2
-	FILESS,             // N 3
-	REDERECTION_INPUT,  // N 4 <
-	REDERECTION_OUTPUT, // N 5 >
-	HERDOC,             // N 6    <<
-	APPEND_REDIRECT     // N 7 >>
+	EXPORT,				// N 0
+	UNSET,				// N 1
+	STRING,             // N 2
+	CMD,                // N 3
+	PIPE,               // N 4
+	FILESS,             // N 5
+	REDERECTION_INPUT,  // N 6 <
+	REDERECTION_OUTPUT, // N 7 >
+	HERDOC,             // N 8  <<
+	APPEND_REDIRECT     // N 9 >>
 };
 
 typedef struct env
