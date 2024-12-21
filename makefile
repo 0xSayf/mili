@@ -14,7 +14,7 @@ all : $(NAME)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME) : $(OFILES) $(LIBRARY)
-	$(CC) $(FLAGS) $(OFILES) $(RD_DYNAMIC) -o $(NAME) 
+	$(CC) $(FLAGS) $(OFILES) $(RD_DYNAMIC) -o $(NAME)  
 
 clean : 
 		rm -rf $(OFILES)

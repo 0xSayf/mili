@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/21 11:06:50 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:58:41 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char **av, char **env)
 			cmd = ft_handle_p_h_a_re(cmd,sir);
 			cmd = ft_handle_herdoc(cmd,sir);
 			ft_go_execute(cmd);
-			ft_freeing_cmd_node(cmd);
+			ft_freeing_cmd_node(&cmd);
 		}
 		ft_lstclear(&sir);
 		i++;

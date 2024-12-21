@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/20 19:47:45 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:58:29 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ t_cmd					*ft_handle_herdoc(t_cmd *cmd, t_token *token);
 t_cmd					*ft_handle_herdoc(t_cmd *cmd, t_token *token);
 void					ft_go_execute(t_cmd *cmd);
 char					*ft_pwd(void);
-void					ft_freeing_cmd_node(t_cmd *cmd);
+void					ft_freeing_cmd_node(t_cmd **cmd);
 
 #endif
