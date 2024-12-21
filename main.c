@@ -6,11 +6,15 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/20 19:33:27 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:06:50 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+void	ll()
+{
+	system("leaks -q minishell");
+}
 
 int	main(int ac, char **av, char **env)
 {
@@ -21,7 +25,9 @@ int	main(int ac, char **av, char **env)
 	int	c;
 	
 	evv = ft_initial_env(evv, env);
-	while (1)
+	int i = 0;
+	atexit(ll);
+	while (i < 5)
 	{
 		tok = ft_splitix(readline("minishell % >>>>>    "));
 		sir = ft_init_token_node(tok);
@@ -36,5 +42,7 @@ int	main(int ac, char **av, char **env)
 			ft_freeing_cmd_node(cmd);
 		}
 		ft_lstclear(&sir);
+		i++;
 	}
+	ft_lst_clr(&evv);
 }

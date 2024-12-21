@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:38:37 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/20 16:11:15 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/21 10:59:45 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_lst_clr(t_env **env)
 	while (curr)
 	{
 		ne = curr->next;
+		free(curr->var);
 		free(curr);
 		curr = ne;
 	}
