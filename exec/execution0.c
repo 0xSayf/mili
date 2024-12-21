@@ -26,15 +26,23 @@ void	ft_go_execute(t_cmd *cmd)
 	int fd[2];
 	int pipeline;
 	pid_t fok;
+	t_cmd	*rep;
 	t_cmd *tmp;
 
 	if (!cmd)
 		return ;
 	tmp = NULL;
 	tmp = cmd;
-	// check_heredoc(tmp);
-	cmd = ft_syntax_cmd(cmd);
-	if (cmd->pipe == false)
+	while (tmp)
+	{
+		rep = ft_syntax_cmd(tmp);
+		tmp = tmp->next;
+	}
+	if (rep)
+		tmp = rep;
+	else
+		tmp = cmd;
+	if (tmp->pipe == false)
 	{
 		fok = fork();
 		if (fok == -1)
@@ -66,9 +74,9 @@ void	ft_go_execute(t_cmd *cmd)
 				pipeline = dup(fd[0]);
 				close(fd[1]);
 				close(fd[0]);
-				tmp = tmp->next;
 				waitpid(fok, NULL, 0);
 			}
+			tmp = tmp->next;
 		}
 	}
 }
