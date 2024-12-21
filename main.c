@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/21 11:58:41 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:43:29 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,19 @@ int	main(int ac, char **av, char **env)
 	
 	evv = ft_initial_env(evv, env);
 	int i = 0;
-	atexit(ll);
-	while (i < 5)
+	// atexit(ll);
+	while (1)
 	{
 		tok = ft_splitix(readline("minishell % >>>>>    "));
 		sir = ft_init_token_node(tok);
 		ft_geave_type(sir, env);
-		c = ft_syntax(sir);
+		// c = ft_syntax(sir);
 		if(c == 1)
 		{
 			cmd = ft_build_nodes(sir);
 			cmd = ft_handle_p_h_a_re(cmd,sir);
 			cmd = ft_handle_herdoc(cmd,sir);
+			cmd = ft_syntax_cmd(cmd);
 			ft_go_execute(cmd);
 			ft_freeing_cmd_node(&cmd);
 		}

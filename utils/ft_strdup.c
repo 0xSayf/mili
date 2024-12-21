@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:57:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 11:01:18 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:48:22 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_strdup(const char *s1)
 	char *ptr;
 
 	i = 0;
+	if(!s1)
+		return NULL;
 	size = ft_strlen(s1) + 1;
 	ptr = malloc(size);
 	if (ptr == NULL)
@@ -45,3 +47,29 @@ char	*ft_strdup(const char *s1)
 	ptr[i] = '\0';
 	return (ptr);
 }
+
+t_cmd *ft_syntax_cmd(t_cmd *com)
+{
+    t_cmd *tmp;
+
+    if (!com)
+        return NULL;
+    
+    tmp = com;
+    while (tmp->next)
+    {
+        if (tmp->cmd)
+        {
+            if (!tmp->path)
+            {
+                if (access(tmp->cmd, F_OK | X_OK) != 0)
+                    printf("CMD not found\n");
+            }
+        }
+        else
+            printf("Syntax error: Command is NULL.\n");
+        tmp = tmp->next;
+    }
+    return com;    
+}
+

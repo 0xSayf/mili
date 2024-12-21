@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 16:14:40 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:13:21 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,22 +144,11 @@ int	ft_syntax(t_token *syntax)
 		printf("syntax error\n");
 		return (0);
 	}
-	else if (!i && (tmp->typ_e != CMD && (ft_check_builtins(tmp) == 0)))
-	{
-		printf("Syntax Error : cmd gg not found \n");
-		return (0);
-	}
 	while (tmp)
 	{
 		if (tmp->typ_e == PIPE && !tmp->next)
 		{
 			printf("syntax errors\n");
-			return (0);
-		}
-		else if ((tmp->typ_e == EXPORT || tmp->typ_e == UNSET) && tmp->next
-			&& (ft_check_dollar(tmp->next) == 0))
-		{
-			printf("syntax  gg errors\n");
 			return (0);
 		}
 		else if ((tmp->typ_e >= REDERECTION_INPUT
