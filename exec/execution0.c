@@ -32,6 +32,8 @@ void	ft_go_execute(t_cmd *cmd)
 		return ;
 	tmp = NULL;
 	tmp = cmd;
+	// check_heredoc(tmp);
+	cmd = ft_syntax_cmd(cmd);
 	if (cmd->pipe == false)
 	{
 		fok = fork();
