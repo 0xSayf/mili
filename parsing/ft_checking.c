@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 15:40:17 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 16:14:28 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,12 +155,6 @@ int	ft_syntax(t_token *syntax)
 				&& tmp->typ_e <= APPEND_REDIRECT) && !tmp->next)
 		{
 			printf("Syntax Error : No such file or directory\n");
-			return (0);
-		}
-		else if (tmp->typ_e == PIPE && (tmp->next->typ_e != CMD
-				&& !ft_check_builtins(tmp->next)))
-		{
-			printf("syntax Error : cmd not found \n");
 			return (0);
 		}
 		tmp = tmp->next;
