@@ -6,11 +6,22 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/20 18:03:24 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:16:07 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	ft_counter_help(char const *str, int *i)
+{
+	char	v;
+
+	v = str[*i];
+	while (str[*i] == v && str[*i])
+		(*i)++;
+	while (str[*i] && str[*i] != v)
+		(*i)++;
+}
 
 int	ft_counter(char const *str, char c)
 {
@@ -25,13 +36,7 @@ int	ft_counter(char const *str, char c)
 	while (str[i])
 	{
 		if (str[i] == 34 || str[i] == 39)
-		{
-			v = str[i];
-			while (str[i] == v && str[i])
-				i++;
-			while (str[i] && str[i] != v)
-				i++;
-		}
+			ft_counter_help(str, &i);
 		if (str[i] == c)
 			i++;
 		else
@@ -48,65 +53,20 @@ int	ft_counter(char const *str, char c)
 char	**ft_ret(char *line, char **retu, char c, int word)
 {
 	int		index;
-	int		len;
-	int		ten;
 	int		i;
-	int		j;
-	char	v;
-	char	quote;
-
+	
 	index = 0;
 	i = 0;
 	while (index < word)
 	{
-		ten = 0;
-		len = 0;
-		j = 0;
 		while (line[i] == c)
 			i++;
-		if (line[i] == 34 || line[i] == 39)
-		{
-			v = line[i];
-			while (line[i] == v && line[i])
-				i++;
-			while (line[i] && line[i] != v)
-			{
-				len++;
-				i++;
-			}
-			retu[index] = malloc(len + 1);
-			while (len > 0)
-			{
-				retu[index][j] = line[i - len];
-				len--;
-				j++;
-			}
-			retu[index][j] = '\0';
-			while (line[i] == v)
-				i++;
-		}
+		if (line[i] == '"' || line[i] == '\'')
+			ft_ret_help(line, retu, &i, &index);
 		else
 		{
-			while (line[i] && line[i] == c)
-				i++;
-			retu[index] = malloc(256);
-			while (line[i])
-			{
-				if (line[i] == '\'' || line[i] == '\"')
-				{
-					quote = line[i];
-					i++;
-					while (line[i] && line[i] != quote)
-						retu[index][j++] = line[i++];
-					if (line[i] == quote)
-						i++;
-				}
-				else if (line[i] == c)
-					break ;
-				else
-					retu[index][j++] = line[i++];
-			}
-			retu[index][j] = '\0';
+			retu[index] = malloc(ft_allocation(line, i, c) + 1);
+			ft_help(line,retu,&i,index);
 		}
 		index++;
 	}

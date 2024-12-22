@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:55:51 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 16:17:20 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:31:24 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,18 @@ t_red	*ft_check_redirection(t_cmd *cmd, t_token *token)
 	if (!cmd || !token)
 		return (NULL);
 	red = cmd->redirection;
-	while (token)
+	while (token && token->typ_e != PIPE)
 	{
-		if (token->typ_e == PIPE)
-			break ;
-		if (token->typ_e == REDERECTION_OUTPUT
-			|| token->typ_e == APPEND_REDIRECT
-			|| token->typ_e == REDERECTION_INPUT)
+		if (token->typ_e >= REDERECTION_INPUT && token->typ_e <= APPEND_REDIRECT)
 		{
 			if (!red)
 			{
-				red = ft_creat_redirection_node(token->next, token->typ_e);
+				red = ft_cr_redir_node(token->next, token->typ_e);
 				help = red;
 			}
 			else
 			{
-				help->next = ft_creat_redirection_node(token->next,
-						token->typ_e);
+				help->next = ft_cr_redir_node(token->next,token->typ_e);
 				help = help->next;
 			}
 		}

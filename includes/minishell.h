@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/21 18:42:17 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:32:34 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ enum					data_type
 	FILESS,             // N 5
 	REDERECTION_INPUT,  // N 6 <
 	REDERECTION_OUTPUT, // N 7 >
-	HERDOC,             // N 8  <<
-	APPEND_REDIRECT     // N 9 >>
+	APPEND_REDIRECT,    // N 8 >>
+	HERDOC,             // N 9  <<
 };
 
 typedef struct env
@@ -115,8 +115,7 @@ t_env					*ft_creat_env(char *content);
 t_env					*ft_initial_env(t_env *env, char **environment);
 t_token					*ft_creat_node(char *content);
 t_token					*ft_init_token_node(char **token);
-t_red					*ft_creat_redirection_node(t_token *token,
-							enum data_type typ_e);
+t_red					*ft_cr_redir_node(t_token *token,enum data_type typ_e);
 t_cmd					*ft_build_nodes(t_token *token);
 t_token					*find_pipe(t_token *find);
 t_cmd					*creat_cmd_node(t_token *start, t_token *end, int k);
@@ -126,5 +125,8 @@ void					ft_go_execute(t_cmd *cmd);
 char					*ft_pwd(void);
 void					ft_freeing_cmd_node(t_cmd **cmd);
 t_cmd					*ft_syntax_cmd(t_cmd	*cmd);
+void    ft_ret_help(char *line, char **retu,int *i, int *index);
+int     ft_allocation(char *line, int  i, char c);
+void	ft_help(char *line, char **retu, int *i, int index);
 
 #endif

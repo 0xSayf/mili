@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:57:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/21 18:52:11 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:25:46 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ t_cmd *ft_syntax_cmd(t_cmd *com)
 
     if (!com)
         return NULL;
-    
     tmp = com;
-    
     if (tmp->cmd)
     {
         if (!tmp->path)
@@ -64,7 +62,6 @@ t_cmd *ft_syntax_cmd(t_cmd *com)
 			if (access(tmp->cmd, F_OK | X_OK) != 0)
 			{
 				printf("CMD not found\n");
-				
 				return tmp->next;
 			}
 		}

@@ -24,7 +24,6 @@ void	ft_cd_help(t_env *env)
 void	*ft_cd(t_env *env, char *str)
 {
 	t_env *tmp;
-	DIR *dir;
 	int status;
 
 	if (!env)
@@ -35,18 +34,11 @@ void	*ft_cd(t_env *env, char *str)
 		ft_cd_help(tmp);
 	else
 	{
-		dir = opendir(str);
-		if (dir == NULL)
-		{
-			perror("opendir");
-			return (NULL);
-		}
 		status = chdir(str);
 		if (status == -1)
 		{
 			perror("No Working Dir");
 			return (NULL);
 		}
-		closedir(dir);
 	}
 }

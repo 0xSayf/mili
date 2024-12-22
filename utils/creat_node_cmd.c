@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:57:46 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/21 12:45:35 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:32:13 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_cmd	*creat_cmd_node(t_token *start, t_token *end, int k)
 	return (new);
 }
 
-t_red	*ft_creat_redirection_node(t_token *token, enum data_type typ_e)
+t_red	*ft_cr_redir_node(t_token *token, enum data_type typ_e)
 {
 	t_red *red;
 
