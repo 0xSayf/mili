@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:38:37 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/21 10:59:45 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:43:00 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	ft_lstclear(t_token **lst)
 
 void	ft_lst_clr(t_env **env)
 {
-	t_env *curr;
-	t_env *ne;
+	t_env	*curr;
+	t_env	*ne;
 
 	if (!env)
 		return ;

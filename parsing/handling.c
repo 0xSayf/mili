@@ -22,7 +22,8 @@ t_red	*ft_check_redirection(t_cmd *cmd, t_token *token)
 	red = cmd->redirection;
 	while (token && token->typ_e != PIPE)
 	{
-		if (token->typ_e >= REDERECTION_INPUT && token->typ_e <= APPEND_REDIRECT)
+		if (token->typ_e >= REDERECTION_INPUT
+			&& token->typ_e <= APPEND_REDIRECT)
 		{
 			if (!red)
 			{
@@ -31,7 +32,7 @@ t_red	*ft_check_redirection(t_cmd *cmd, t_token *token)
 			}
 			else
 			{
-				help->next = ft_cr_redir_node(token->next,token->typ_e);
+				help->next = ft_cr_redir_node(token->next, token->typ_e);
 				help = help->next;
 			}
 		}

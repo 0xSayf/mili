@@ -52,9 +52,9 @@ int	ft_counter(char const *str, char c)
 
 char	**ft_ret(char *line, char **retu, char c, int word)
 {
-	int		index;
-	int		i;
-	
+	int	index;
+	int	i;
+
 	index = 0;
 	i = 0;
 	while (index < word)
@@ -66,7 +66,7 @@ char	**ft_ret(char *line, char **retu, char c, int word)
 		else
 		{
 			retu[index] = malloc(ft_allocation(line, i, c) + 1);
-			ft_help(line,retu,&i,index);
+			ft_help(line, retu, &i, index);
 		}
 		index++;
 	}

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:59:39 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/19 14:12:43 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:46:04 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	ft_go_del(t_env **env, char *line)
 
 int	ft_check_builtins(t_token *token)
 {
-	char *ptr[4];
-	int i;
+	char	*ptr[4];
+	int		i;
 
 	if (!token)
 		return (0);

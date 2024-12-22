@@ -28,13 +28,13 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strdup(const char *s1)
 {
-	int i;
-	int size;
-	char *ptr;
+	int		i;
+	int		size;
+	char	*ptr;
 
 	i = 0;
-	if(!s1)
-		return NULL;
+	if (!s1)
+		return (NULL);
 	size = ft_strlen(s1) + 1;
 	ptr = malloc(size);
 	if (ptr == NULL)
@@ -48,26 +48,25 @@ char	*ft_strdup(const char *s1)
 	return (ptr);
 }
 
-t_cmd *ft_syntax_cmd(t_cmd *com)
+t_cmd	*ft_syntax_cmd(t_cmd *com)
 {
-    t_cmd *tmp;
+	t_cmd	*tmp;
 
-    if (!com)
-        return NULL;
-    tmp = com;
-    if (tmp->cmd)
-    {
-        if (!tmp->path)
-        {
+	if (!com)
+		return (NULL);
+	tmp = com;
+	if (tmp->cmd)
+	{
+		if (!tmp->path)
+		{
 			if (access(tmp->cmd, F_OK | X_OK) != 0)
 			{
 				printf("CMD not found\n");
-				return tmp->next;
+				return (tmp->next);
 			}
 		}
 	}
 	else
 		printf("Syntax error: Command is NULL.\n");
-    return NULL;    
+	return (NULL);
 }
-

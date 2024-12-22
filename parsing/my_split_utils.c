@@ -48,9 +48,9 @@ void	ft_hhhhhhhhhhh(int *i, int *len)
 
 int	ft_allocation(char *line, int i, char c)
 {
-	int	len;
-    char    quote;
-    
+	int		len;
+	char	quote;
+
 	len = 0;
 	while (line[i])
 	{
@@ -77,9 +77,9 @@ int	ft_allocation(char *line, int i, char c)
 void	ft_help(char *line, char **retu, int *i, int index)
 {
 	int j;
-    char quote;
-    
-    j = 0;
+	char quote;
+
+	j = 0;
 	while (line[*i])
 	{
 		if (line[*i] == '"' || line[*i] == '\'')

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:08:58 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/11/22 11:01:33 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:45:19 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ static char	**ft_cho9(char const *str, char **arr, char c, int word)
 
 char	**ft_split(char const *s, char c)
 {
-	char **arr;
-	int word_count;
+	int		word_count;
+	char	**arr;
 
 	if (!s)
 		return (NULL);

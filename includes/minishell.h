@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 15:32:34 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:41:05 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-enum					data_type
+enum					e_data_type
 {
-	EXPORT,				// N 0
-	UNSET,				// N 1
-	STRING,             // N 2
-	CMD,                // N 3
-	PIPE,               // N 4
-	FILESS,             // N 5
-	REDERECTION_INPUT,  // N 6 <
-	REDERECTION_OUTPUT, // N 7 >
-	APPEND_REDIRECT,    // N 8 >>
-	HERDOC,             // N 9  <<
+	EXPORT,
+	UNSET,
+	STRING,
+	CMD,
+	PIPE,
+	FILESS,
+	REDERECTION_INPUT,
+	REDERECTION_OUTPUT,
+	APPEND_REDIRECT,
+	HERDOC,
 };
 
 typedef struct env
@@ -49,7 +49,7 @@ typedef struct env
 typedef struct t_minishell
 {
 	char				*string;
-	enum data_type		typ_e;
+	enum e_data_type	typ_e;
 	char				*path;
 	struct t_minishell	*next;
 }						t_token;
@@ -65,7 +65,7 @@ typedef struct s_red
 	char				*red_out;
 	char				*red_input;
 	char				*red_append;
-	enum data_type		typix;
+	enum e_data_type	typix;
 	struct s_red		*next;
 }						t_red;
 
@@ -110,12 +110,12 @@ char					**ft_the_args(char **ret, t_token *start, int arg);
 int						find(t_env *env, char *line);
 int						ft_count_args(t_token *start, t_token *end);
 int						count_command_arguments(t_token *current);
-enum data_type			ft_type(t_token *type, char **env);
+enum e_data_type			ft_type(t_token *type, char **env);
 t_env					*ft_creat_env(char *content);
 t_env					*ft_initial_env(t_env *env, char **environment);
 t_token					*ft_creat_node(char *content);
 t_token					*ft_init_token_node(char **token);
-t_red					*ft_cr_redir_node(t_token *token,enum data_type typ_e);
+t_red					*ft_cr_redir_node(t_token *token, enum e_data_type typ_e);
 t_cmd					*ft_build_nodes(t_token *token);
 t_token					*find_pipe(t_token *find);
 t_cmd					*creat_cmd_node(t_token *start, t_token *end, int k);
@@ -124,9 +124,10 @@ t_cmd					*ft_handle_herdoc(t_cmd *cmd, t_token *token);
 void					ft_go_execute(t_cmd *cmd);
 char					*ft_pwd(void);
 void					ft_freeing_cmd_node(t_cmd **cmd);
-t_cmd					*ft_syntax_cmd(t_cmd	*cmd);
-void    ft_ret_help(char *line, char **retu,int *i, int *index);
-int     ft_allocation(char *line, int  i, char c);
-void	ft_help(char *line, char **retu, int *i, int index);
+t_cmd					*ft_syntax_cmd(t_cmd *cmd);
+void					ft_ret_help(char *line, char **retu, int *i,
+							int *index);
+int						ft_allocation(char *line, int i, char c);
+void					ft_help(char *line, char **retu, int *i, int index);
 
 #endif
