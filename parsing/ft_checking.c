@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 16:14:28 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 16:15:24 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,15 +131,13 @@ int	ft_check_dollar(t_token *token)
 
 int	ft_syntax(t_token *syntax)
 {
-	int i;
 	t_token *tmp;
 
 	tmp = NULL;
 	if (!syntax || !syntax->string)
 		return (0);
 	tmp = syntax;
-	i = 0;
-	if (!i && *(tmp->string) == '|')
+	if (*(tmp->string) == '|')
 	{
 		printf("syntax error\n");
 		return (0);
