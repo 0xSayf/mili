@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 16:15:24 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 16:16:47 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ int	ft_syntax(t_token *syntax)
 {
 	t_token *tmp;
 
-	tmp = NULL;
 	if (!syntax || !syntax->string)
 		return (0);
 	tmp = syntax;
