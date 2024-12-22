@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:36:51 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 15:23:11 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 18:33:37 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_herdoc	*ft_check_herdoc(t_cmd *cmd, t_token *token)
 
 t_cmd	*ft_handle_herdoc(t_cmd *cmd, t_token *token)
 {
-	t_cmd *sat;
-	t_token *yes;
+	t_cmd	*sat;
+	t_token	*yes;
 
 	if (!cmd || !token)
 		return (NULL);

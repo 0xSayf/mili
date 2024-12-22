@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:36:48 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 15:19:33 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 18:31:04 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_ret_help(char *line, char **retu, int *i, int *index)
 	j = 0;
 	v = line[*i];
 	len = 0;
-	while (line[*i] == v && line[*i])
+	while (line[*i] && line[*i] == v)
 		(*i)++;
 	while (line[*i] && line[*i] != v)
 	{
