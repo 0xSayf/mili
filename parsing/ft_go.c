@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:59:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/20 16:09:32 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 18:34:42 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_token	*ft_init_token_node(char **token)
 
 int	ft_geave_type(t_token *type, char **env)
 {
-	t_token *tmp;
+	t_token	*tmp;
 
 	if (!type || !type->string)
 		return (0);

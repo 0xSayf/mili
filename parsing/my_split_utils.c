@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:36:48 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 18:31:04 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 18:41:22 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int	ft_allocation(char *line, int i, char c)
 
 void	ft_help(char *line, char **retu, int *i, int index)
 {
-	int j;
-	char quote;
+	int		j;
+	char	quote;
 
 	j = 0;
 	while (line[*i])
