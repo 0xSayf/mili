@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 16:16:47 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/22 16:20:14 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,12 @@ char	*find_path(char *av, char *evp)
 int	ft_qt(char *line)
 {
 	int		i;
-	int		len;
 	int		num;
 	char	c;
 
-	if (!line)
-		return (0);
 	i = 0;
 	num = 0;
-	len = ft_strlen(line);
-	while (line[i] && i < len)
+	while (line[i] && i < ft_strlen(line))
 	{
 		if (line[i] == 34 || line[i] == 39)
 		{
