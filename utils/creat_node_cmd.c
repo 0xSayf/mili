@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:57:46 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/23 12:09:09 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 12:14:04 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,21 @@ t_cmd	*creat_cmd_node(t_token *start, t_token *end)
 	return (new);
 }
 
+t_red	*ft_help_mal(t_red *red)
+{
+	if (!red)
+		return (NULL);
+	red = malloc(sizeof(t_red));
+	if (!red)
+		return (NULL);
+	return (red);
+}
+
 t_red	*ft_cr_redir_node(t_token *token, enum e_data_type typ_e)
 {
 	t_red	*red;
 
-	red = malloc(sizeof(t_red));
+	red = ft_help_mal(red);
 	red->typix = typ_e;
 	if (typ_e == REDERECTION_OUTPUT)
 	{
