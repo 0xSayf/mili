@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 18:35:29 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:55:28 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,8 @@
 
 enum e_data_type	ft_type(t_token *type, char **env)
 {
-	int		i;
-	int		fd;
-	char	*path;
-
-	i = 0;
-	while (ft_strnstr(env[i], "PATH", 4) == NULL)
-		i++;
-	path = find_path(type->string, env[i]);
-	if (path)
-	{
-		type->path = path;
-		return (CMD);
-	}
-	if ((fd = open(type->string, O_RDONLY, 0777)) != -1)
-	{
-		close(fd);
-		return (FILESS);
-	}
+	if (ft_type_helper(type, env) == CMD || ft_type_helper(type, env) == FILESS)
+		return (ft_type_helper(type, env));
 	else if (*(type->string) == '|')
 		return (PIPE);
 	else if (*(type->string) == '<')
@@ -127,7 +111,7 @@ int	ft_check_dollar(t_token *token)
 
 int	ft_syntax(t_token *syntax)
 {
-	t_token *tmp;
+	t_token	*tmp;
 
 	if (!syntax || !syntax->string)
 		return (0);
@@ -139,17 +123,8 @@ int	ft_syntax(t_token *syntax)
 	}
 	while (tmp)
 	{
-		if (tmp->typ_e == PIPE && !tmp->next)
-		{
-			printf("syntax errors\n");
+		if (ft_syntax_helper(tmp) == 0)
 			return (0);
-		}
-		else if ((tmp->typ_e >= REDERECTION_INPUT
-				&& tmp->typ_e <= APPEND_REDIRECT) && !tmp->next)
-		{
-			printf("Syntax Error : No such file or directory\n");
-			return (0);
-		}
 		tmp = tmp->next;
 	}
 	return (1);

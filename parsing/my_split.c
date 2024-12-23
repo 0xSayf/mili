@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:50:01 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 18:40:21 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:25:19 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**ft_ret(char *line, char **retu, char c, int word)
 	{
 		while (line[i] == c)
 			i++;
-		if (line[i] == '"' || line[i] == '\'')
+		if (line[i] == 34 || line[i] == 39)
 			ft_ret_help(line, retu, &i, &index);
 		else
 		{

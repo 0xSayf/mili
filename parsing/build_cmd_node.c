@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:52:45 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 18:39:20 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 12:07:44 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,19 @@ int	ft_count_args(t_token *start, t_token *end)
 
 t_cmd	*ft_build_nodes(t_token *token)
 {
-	int		k;
 	t_token	*tmp;
 	t_token	*start;
 	t_token	*end;
 	t_cmd	*cmd;
 	t_cmd	*exec;
 
-	if (!token)
-		return (NULL);
 	cmd = NULL;
-	exec = NULL;
 	tmp = token;
 	if (!cmd)
 	{
 		start = token;
 		end = find_pipe(token);
-		if (!end)
-			k = 0;
-		else
-			k = 1;
-		cmd = creat_cmd_node(start, end, k);
+		cmd = creat_cmd_node(start, end);
 		exec = cmd;
 	}
 	while (tmp && end && end->next)
@@ -61,11 +53,7 @@ t_cmd	*ft_build_nodes(t_token *token)
 		start = end->next;
 		tmp = end->next;
 		end = find_pipe(tmp);
-		if (!end)
-			k = 0;
-		else
-			k = 1;
-		exec->next = creat_cmd_node(start, end, k);
+		exec->next = creat_cmd_node(start, end);
 		exec = exec->next;
 	}
 	return (cmd);

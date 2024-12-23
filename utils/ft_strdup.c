@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:57:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 15:25:46 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:54:06 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,46 @@ t_cmd	*ft_syntax_cmd(t_cmd *com)
 	else
 		printf("Syntax error: Command is NULL.\n");
 	return (NULL);
+}
+
+enum e_data_type	ft_type_helper(t_token *type, char **env)
+{
+	int		i;
+	char	*path;
+	int		fd;
+
+	i = 0;
+	while (ft_strnstr(env[i], "PATH", 4) == NULL)
+		i++;
+	path = find_path(type->string, env[i]);
+	if (path)
+	{
+		type->path = path;
+		return (CMD);
+	}
+	fd = open(type->string, O_RDONLY, 0777);
+	if (fd != -1)
+	{
+		close(fd);
+		return (FILESS);
+	}
+	return (-1);
+}
+
+int	ft_syntax_helper(t_token *tmp)
+{
+	if (!tmp)
+		return (0);
+	if (tmp->typ_e == PIPE && !tmp->next)
+	{
+		printf("syntax errors\n");
+		return (0);
+	}
+	else if ((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= APPEND_REDIRECT)
+		&& !tmp->next)
+	{
+		printf("Syntax Error : No such file or directory\n");
+		return (0);
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:57:46 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 15:43:33 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:58:08 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	**ft_the_args(char **ret, t_token *start, int arg)
 	return (ret);
 }
 
-t_cmd	*creat_cmd_node(t_token *start, t_token *end, int k)
+t_cmd	*creat_cmd_node(t_token *start, t_token *end)
 {
 	t_cmd	*new;
 
@@ -61,7 +61,7 @@ t_cmd	*creat_cmd_node(t_token *start, t_token *end, int k)
 	new = malloc(sizeof(t_cmd));
 	if (!new)
 		return (NULL);
-	if (!k)
+	if (!end)
 		new->pipe = false;
 	else
 		new->pipe = true;

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:36:48 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 18:41:22 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:26:00 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_allocation(char *line, int i, char c)
 	len = 0;
 	while (line[i])
 	{
-		if (line[i] == '"' || line[i] == '\'')
+		if (line[i] == 34 || line[i] == 39)
 		{
 			quote = line[i];
 			i++;
@@ -82,7 +82,7 @@ void	ft_help(char *line, char **retu, int *i, int index)
 	j = 0;
 	while (line[*i])
 	{
-		if (line[*i] == '"' || line[*i] == '\'')
+		if (line[*i] == 34 || line[*i] == 39)
 		{
 			quote = line[*i];
 			(*i)++;

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 15:41:05 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:58:25 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,17 @@ char					**ft_the_args(char **ret, t_token *start, int arg);
 int						find(t_env *env, char *line);
 int						ft_count_args(t_token *start, t_token *end);
 int						count_command_arguments(t_token *current);
-enum e_data_type			ft_type(t_token *type, char **env);
+enum e_data_type		ft_type(t_token *type, char **env);
+enum e_data_type		ft_type_helper(t_token *type, char **env);
 t_env					*ft_creat_env(char *content);
 t_env					*ft_initial_env(t_env *env, char **environment);
 t_token					*ft_creat_node(char *content);
 t_token					*ft_init_token_node(char **token);
-t_red					*ft_cr_redir_node(t_token *token, enum e_data_type typ_e);
+t_red					*ft_cr_redir_node(t_token *token,
+							enum e_data_type typ_e);
 t_cmd					*ft_build_nodes(t_token *token);
 t_token					*find_pipe(t_token *find);
-t_cmd					*creat_cmd_node(t_token *start, t_token *end, int k);
+t_cmd					*creat_cmd_node(t_token *start, t_token *end);
 t_cmd					*ft_handle_herdoc(t_cmd *cmd, t_token *token);
 t_cmd					*ft_handle_herdoc(t_cmd *cmd, t_token *token);
 void					ft_go_execute(t_cmd *cmd);
@@ -129,5 +131,5 @@ void					ft_ret_help(char *line, char **retu, int *i,
 							int *index);
 int						ft_allocation(char *line, int i, char c);
 void					ft_help(char *line, char **retu, int *i, int index);
-
+int						ft_syntax_helper(t_token *tmp);
 #endif
