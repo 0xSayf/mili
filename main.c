@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/24 16:43:28 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/24 20:49:39 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,32 @@ t_cmd	*check(t_cmd	*cmd)
 	return cmd;
 }
 
+t_token	*ft_main(t_env	*env)
+{
+	char 	**tok;
+	t_token	*sir;
+	
+	tok = ft_splitix(readline("minishell % >>>>>    "));
+	if(!tok)
+		return NULL;
+	sir = ft_init_token_node(tok);
+	sir = ft_expand_dollar(sir,env);
+	if(!sir)
+		return NULL;
+	return	sir;
+}
+
 int	main(int ac, char **av, char **env)
 {
 	t_token	*sir;
 	t_env	*evv;
 	t_cmd	*cmd;
-	char	**tok;
 	int		c;
 
 	evv = ft_initial_env(evv, env);
 	while (1)
 	{
-		tok = ft_splitix(readline("minishell % >>>>>    "));
-		sir = ft_init_token_node(tok);
-		sir = ft_expand_dollar(sir,evv);
+		sir = ft_main(evv);
 		ft_geave_type(sir, env);
 		c = ft_syntax(sir);
 		if (c == 1)

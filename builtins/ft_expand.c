@@ -1,6 +1,6 @@
 #include "../includes/minishell.h"
 
-void	ft_expand(char **line, t_env *env)
+void	ft_export(char *line, t_env *env)
 {
 	int i;
 	char *str;

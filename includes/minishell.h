@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/24 15:16:07 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/24 20:41:46 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void					*ft_memcpy(void *dst, const void *src, size_t n);
 void					freeing(char **str);
 void					*ft_handle_p_h_a_re(t_cmd *cmd, t_token *tmp);
 int						ft_strcmp(char *s1, char *s2);
-void					del(char *string);
 void					ft_lstclear(t_token **lst);
 int						ft_geave_type(t_token *type, char **env);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -134,4 +133,5 @@ void					ft_help(char *line, char **retu, int *i, int index);
 int						ft_syntax_helper(t_token *tmp);
 void    ft_env(t_env    *env);
 t_token *ft_expand_dollar(t_token *token,t_env  *env);
+
 #endif
