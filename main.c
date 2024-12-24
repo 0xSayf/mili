@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/24 16:36:25 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/24 16:43:28 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ t_cmd	*check(t_cmd	*cmd)
 		str = cmd->cmd;
 		if(ft_strncmp(str, "$",1) == 0)
 		{
-			if(str[1])			
+			if(str[1])
+			{
+				ft_freeing_cmd_node(&cmd);
 				return NULL;
+			}	
 		}
 	}
 	return cmd;
