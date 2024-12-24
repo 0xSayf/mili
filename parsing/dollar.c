@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 13:45:23 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/24 15:23:38 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/24 15:34:05 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_token *ft_expand_dollar(t_token *token,t_env  *env)
     char    *ptr;
     char    *str;
     
-    if(!token || !env)
+    if(!token || !token->string || !env)
         return NULL;
     tmp = token;
     while (tmp)
@@ -63,12 +63,6 @@ t_token *ft_expand_dollar(t_token *token,t_env  *env)
         else if (ptr[0] == '$' && ptr[1])
         {
             str = ft_search(&ptr[1],env);
-            // if(!str)
-            // {
-            //     free(tmp->string);
-            //     tmp->string = malloc(ft_strlen(""));
-            //     tmp->string[0] = '\0'; 
-            // } 
             if(str)
             {
                 free(tmp->string);
