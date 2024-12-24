@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 13:45:23 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/24 16:05:23 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/24 16:06:36 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_token *ft_expand_dollar(t_token *token,t_env  *env)
                     ft_memcpy(tmp->string,str + 1,ft_strlen(str + 1));
                     tmp->string[ft_strlen(str+ 1)] = '\0';
                 }
-                // printf("%s\n", tmp->string);   
             }
         }
         tmp = tmp->next;
