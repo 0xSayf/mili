@@ -38,7 +38,7 @@ void	*ft_cd(t_env *env, char *str)
 		if (status == -1)
 		{
 			perror("No Working Dir");
-			return (NULL);
+			return ((void *)0);
 		}
 	}
 }

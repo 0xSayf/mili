@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:36:48 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/23 11:26:00 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:33:35 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,37 @@ void	ft_ret_help(char *line, char **retu, int *i, int *index)
 	int		j;
 	int		len;
 	char	v;
+	int		save;
 
 	j = 0;
 	v = line[*i];
 	len = 0;
-	while (line[*i] && line[*i] == v)
-		(*i)++;
-	while (line[*i] && line[*i] != v)
+	while (line[*i] && line[*i] != 32)
 	{
-		len++;
-		(*i)++;
+		while (line[*i] && line[*i] == v)
+			(*i)++;
+		while (line[*i] && line[*i] != v)
+		{
+			len++;
+			(*i)++;
+		}
 	}
-	retu[*index] = malloc(len + 1);
-	while (len > 0)
+	retu[*index] = malloc(len++);
+	// printf("len      ==  %d\n", len);
+	save = *i - 1;
+	// printf("save      ==  %d\n", save);
+	while (len > 0 )
 	{
-		retu[*index][j] = line[*i - len];
-		len--;
-		j++;
+		if(line[save - len] != v)
+		{
+			retu[*index][j] = line[save - len];
+			len--;
+			j++;
+		}
+		else
+			save++;
 	}
 	retu[*index][j] = '\0';
-	while (line[*i] == v)
-		(*i)++;
 }
 
 void	ft_hhhhhhhhhhh(int *i, int *len)
@@ -54,7 +64,7 @@ int	ft_allocation(char *line, int i, char c)
 	len = 0;
 	while (line[i])
 	{
-		if (line[i] == 34 || line[i] == 39)
+		if (line[i] == '"' || line[i] == '\'')
 		{
 			quote = line[i];
 			i++;
@@ -82,7 +92,7 @@ void	ft_help(char *line, char **retu, int *i, int index)
 	j = 0;
 	while (line[*i])
 	{
-		if (line[*i] == 34 || line[*i] == 39)
+		if (line[*i] == 34 || line[*i] == '\'')
 		{
 			quote = line[*i];
 			(*i)++;

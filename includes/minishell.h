@@ -6,14 +6,13 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/23 11:58:25 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/24 15:16:07 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <dirent.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <readline/history.h>
@@ -28,6 +27,7 @@
 enum					e_data_type
 {
 	EXPORT,
+	ENV_VAR,
 	UNSET,
 	STRING,
 	CMD,
@@ -132,4 +132,6 @@ void					ft_ret_help(char *line, char **retu, int *i,
 int						ft_allocation(char *line, int i, char c);
 void					ft_help(char *line, char **retu, int *i, int index);
 int						ft_syntax_helper(t_token *tmp);
+void    ft_env(t_env    *env);
+t_token *ft_expand_dollar(t_token *token,t_env  *env);
 #endif
