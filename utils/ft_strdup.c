@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:57:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/23 11:54:06 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/24 16:55:11 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,22 @@ char	*ft_strdup(const char *s1)
 t_cmd	*ft_syntax_cmd(t_cmd *com)
 {
 	t_cmd	*tmp;
+	char	*str;
 
 	if (!com)
 		return (NULL);
 	tmp = com;
 	if (tmp->cmd)
 	{
+		str = tmp->cmd;
+		if(tmp->pipe == true)
+		{
+			if(ft_strncmp(str, "$",1) == 0)
+			{
+				if(str[1])
+					return tmp->next;
+			}	
+		}
 		if (!tmp->path)
 		{
 			if (access(tmp->cmd, F_OK | X_OK) != 0)
