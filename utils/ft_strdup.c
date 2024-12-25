@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:57:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/24 16:55:11 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:57:29 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,41 @@ int	ft_syntax_helper(t_token *tmp)
 	if (!tmp)
 		return (0);
 	if (tmp->typ_e == PIPE && !tmp->next)
+	{
+		printf("syntax errors\n");
+		return (0);
+	}
+	else if(*(tmp->string) == '|' && (tmp->string[1]) == '|')
+	{
+		printf("syntax errors\n");
+		return (0);
+	}
+	else if(!ft_strncmp(tmp->string, ">>>", 3))
+	{
+		printf("syntax errors\n");
+		return (0);
+	} 
+	else if(!ft_strncmp(tmp->string, ">><", 3))
+	{
+		printf("syntax errors\n");
+		return (0);
+	} 
+	else if(!ft_strncmp(tmp->string, "<<<", 3))
+	{
+		printf("syntax errors\n");
+		return (0);
+	} 
+	else if(!ft_strncmp(tmp->string, "<<>", 3))
+	{
+		printf("syntax errors\n");
+		return (0);
+	} 
+	else if((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= HERDOC) && tmp->next && (tmp->next->typ_e >= REDERECTION_INPUT && tmp->next->typ_e <= HERDOC))
+	{
+		printf("syntax errors\n");
+		return (0);
+	} 
+	else if (tmp->typ_e == PIPE && tmp->next->typ_e == PIPE)
 	{
 		printf("syntax errors\n");
 		return (0);
