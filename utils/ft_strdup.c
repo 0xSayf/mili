@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:57:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/25 18:57:29 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/25 19:11:47 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int	ft_syntax_helper(t_token *tmp)
 		printf("syntax errors\n");
 		return (0);
 	}
-	else if ((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= APPEND_REDIRECT)
+	else if ((tmp->typ_e >= REDERECTION_INPUT && tmp->typ_e <= HERDOC)
 		&& !tmp->next)
 	{
 		printf("Syntax Error : No such file or directory\n");
