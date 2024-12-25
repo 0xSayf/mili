@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/25 17:27:17 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/25 19:56:22 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 enum					e_data_type
 {
+	DELIM,
 	EXPORT,
 	ENV_VAR,
 	UNSET,

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 13:45:23 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/25 18:34:37 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:25:28 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,15 @@ char    *ft_search(char *string, t_env  *env)
 t_token *ft_expand_dollar(t_token *token,t_env  *env)
 {
     t_token *tmp;
-    int     her_doc;
     char    *ptr;
     char    *str;
     
     if(!token || !env)
         return NULL;
     tmp = token;
-    her_doc = 0;
     while (tmp)
     {
-        if (tmp->string && !her_doc)
+        if (tmp->typ_e != DELIM && tmp->string)
         {
             ptr = tmp->string;
             if (ptr[0] == '$' && ptr[1] && ptr[1] != ' ' && ptr[1] != '\t')
@@ -97,10 +95,6 @@ t_token *ft_expand_dollar(t_token *token,t_env  *env)
                 }
             }
         }
-        if(tmp->typ_e == HERDOC)
-            her_doc = 1;
-        else
-            her_doc = 0;
         tmp = tmp->next;
     }
     return token;

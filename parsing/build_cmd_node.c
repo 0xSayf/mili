@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:52:45 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/23 12:07:44 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:41:00 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_count_args(t_token *start, t_token *end)
 	i = 0;
 	while ((tmp) && (tmp->typ_e != PIPE))
 	{
-		if (tmp->typ_e == CMD || tmp->typ_e == STRING || tmp->typ_e == FILESS)
+		if (tmp->typ_e != DELIM)
 			i++;
 		tmp = tmp->next;
 	}

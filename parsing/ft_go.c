@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:59:49 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 18:34:42 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:12:06 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ int	ft_geave_type(t_token *type, char **env)
 	while (tmp)
 	{
 		tmp->typ_e = ft_type(tmp, env);
+		if(tmp->typ_e == HERDOC)
+		{
+			tmp->next->typ_e = DELIM;
+			tmp = tmp->next;
+		}
 		tmp = tmp->next;
 	}
 	return (1);
