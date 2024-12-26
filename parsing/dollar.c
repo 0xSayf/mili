@@ -80,7 +80,6 @@ t_token *ft_expand_dollar(t_token *token,t_env  *env)
     tmp = token;
     while (tmp)
     {
-        printf(">>>> the type %d ,, the string %s\n", tmp->typ_e,tmp->string);
         if (tmp->typ_e != DELIM && tmp->string)
         {
             ptr = tmp->string;
