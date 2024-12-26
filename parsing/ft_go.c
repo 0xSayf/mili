@@ -50,8 +50,8 @@ int	ft_geave_type(t_token *type, char **env)
 		tmp->typ_e = ft_type(tmp, env);
 		if(tmp->typ_e == HERDOC)
 		{
-			tmp->next->typ_e = DELIM;
 			tmp = tmp->next;
+			tmp->typ_e = DELIM;
 		}
 		tmp = tmp->next;
 	}

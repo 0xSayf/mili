@@ -33,21 +33,6 @@ t_cmd	*check(t_cmd	*cmd)
 	return cmd;
 }
 
-t_token	*ft_main(t_env	*env)
-{
-	char 	**tok;
-	t_token	*sir;
-	
-	tok = ft_splitix(readline("minishell % >>>>>    "));
-	if(!tok)
-		return NULL;
-	sir = ft_init_token_node(tok);
-	sir = ft_expand_dollar(sir,env);
-	if(!sir)
-		return NULL;
-	return	sir;
-}
-
 void	ft_cmd(t_env	*env, t_token *sir)
 {
 	t_cmd	*cmd;
@@ -62,6 +47,21 @@ void	ft_cmd(t_env	*env, t_token *sir)
 	ft_freeing_cmd_node(&cmd);
 }
 
+t_token	*ft_main(t_env	*env)
+{
+	char 	**tok;
+	t_token	*sir;
+	
+	tok = ft_splitix(readline("minishell % >>>>>    "));
+	if(!tok)
+		return NULL;
+	sir = ft_init_token_node(tok);
+	if(!sir)
+		return NULL;
+	return	sir;
+}
+
+
 int	main(int ac, char **av, char **env)
 {
 	t_token	*sir;
@@ -72,7 +72,9 @@ int	main(int ac, char **av, char **env)
 	while (1)
 	{
 		sir = ft_main(evv);
+		t_token *tmp = sir;
 		ft_geave_type(sir, env);
+		sir = ft_expand_dollar(sir,evv);
 		c = ft_syntax(sir);
 		if (c == 1)
 			ft_cmd(evv,sir);
