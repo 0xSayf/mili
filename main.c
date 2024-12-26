@@ -72,7 +72,6 @@ int	main(int ac, char **av, char **env)
 	while (1)
 	{
 		sir = ft_main(evv);
-		t_token *tmp = sir;
 		ft_geave_type(sir, env);
 		sir = ft_expand_dollar(sir,evv);
 		c = ft_syntax(sir);
