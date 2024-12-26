@@ -33,7 +33,6 @@ t_env	*ft_creat_env(char *content)
 	if (!new)
 		return (NULL);
 	new->var = ft_strdup(content);
-	new->to_print = NULL;
 	new->next = NULL;
 	return (new);
 }

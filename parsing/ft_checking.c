@@ -41,6 +41,7 @@ char	*find_path(char *av, char *evp)
 {
 	char	**paths;
 	char	*ret;
+	char	*tmp;
 	int		i;
 
 	if (!av || !evp)
@@ -49,19 +50,18 @@ char	*find_path(char *av, char *evp)
 	paths = ft_split(evp + 5, ':');
 	while (paths[i])
 	{
-		ret = ft_strjoin(paths[i], "/");
-		ret = ft_strjoin(ret, av);
+		tmp = ft_strjoin(paths[i], "/");
+		ret = ft_strjoin(tmp, av);
+		free(tmp);
 		if (access(ret, F_OK && X_OK) == 0)
 		{
-			while (paths[i++])
-				free(paths[i]);
-			free(paths);
+			freeing(paths);
 			return (ret);
 		}
 		i++;
 		free(ret);
 	}
-	free(paths);
+	freeing(paths);
 	return (NULL);
 }
 

@@ -56,7 +56,6 @@ char	*ft_strjoin(char *s1, char const *s2)
 	ft_memcpy((void *)(ptr), (const void *)s1, ls1);
 	ft_memcpy((void *)(ptr + ls1), (const void *)s2, ls2);
 	ptr[tot - 1] = '\0';
-	free(s1);
 	return (ptr);
 }
 

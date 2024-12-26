@@ -107,3 +107,4 @@ int	ft_check_builtins(t_token *token)
 	}
 	return (0);
 }
+

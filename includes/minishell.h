@@ -44,7 +44,6 @@ typedef struct env
 {
 	struct env			*next;
 	char				*var;
-	char				*to_print;
 }						t_env;
 
 typedef struct t_minishell
@@ -132,7 +131,8 @@ void					ft_ret_help(char *line, char **retu, int *i,
 int						ft_allocation(char *line, int i, char c);
 void					ft_help(char *line, char **retu, int *i, int index);
 int						ft_syntax_helper(t_token *tmp);
-void    ft_env(t_env    *env);
-t_token *ft_expand_dollar(t_token *token,t_env  *env);
+void    				ft_env(t_env    *env);
+t_token 				*ft_expand_dollar(t_token *token,t_env  *env);
+char					*ft_strchr(const char *s, int c);
 
 #endif
