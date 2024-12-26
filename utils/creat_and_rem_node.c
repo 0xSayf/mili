@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:38:37 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/22 15:43:00 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:36:49 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_lstclear(t_token **lst)
 	{
 		ne = curr->next;
 		free(curr->string);
-		if (curr->typ_e == CMD)
+		if (curr->path)
 			free(curr->path);
 		free(curr);
 		curr = ne;

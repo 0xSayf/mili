@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:49:18 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/25 20:29:29 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:40:30 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	ft_cmd(t_env	*env, t_token *sir)
 	cmd = check(cmd);
 	cmd = ft_handle_p_h_a_re(cmd, sir);
 	cmd = ft_handle_herdoc(cmd, sir);
-	ft_go_execute(cmd);
+	t_cmd	*tmp = cmd;
+	ft_go_execute(tmp);
 	ft_freeing_cmd_node(&cmd);
 }
 
@@ -60,7 +61,10 @@ t_token	*ft_main(t_env	*env)
 		return NULL;
 	return	sir;
 }
-
+void ll ()
+{
+	system("leaks -q minishell");
+}
 
 int	main(int ac, char **av, char **env)
 {
@@ -69,7 +73,9 @@ int	main(int ac, char **av, char **env)
 	int		c;
 
 	evv = ft_initial_env(evv, env);
-	while (1)
+	int i = 0;
+	atexit(ll);
+	while (i < 10)
 	{
 		sir = ft_main(evv);
 		ft_geave_type(sir, env);
@@ -78,6 +84,7 @@ int	main(int ac, char **av, char **env)
 		if (c == 1)
 			ft_cmd(evv,sir);
 		ft_lstclear(&sir);
+		i++;
 	}
 	ft_lst_clr(&evv);
 }

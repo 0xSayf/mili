@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/25 18:36:06 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:40:08 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 enum e_data_type	ft_type(t_token *type, char **env)
 {
 	if (ft_type_helper(type, env) == CMD || ft_type_helper(type, env) == FILESS)
+	{
+		free(type->path);
 		return (ft_type_helper(type, env));
+	}
 	else if (*(type->string) == '|')
 		return (PIPE);
 	else if (*(type->string) == '<')

@@ -6,7 +6,7 @@
 /*   By: sahamzao <sahamzao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:57:52 by sahamzao          #+#    #+#             */
-/*   Updated: 2024/12/25 19:11:47 by sahamzao         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:35:57 by sahamzao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ enum e_data_type	ft_type_helper(t_token *type, char **env)
 	path = find_path(type->string, env[i]);
 	if (path)
 	{
-		type->path = path;
+		type->path = ft_strdup(path);
+		free(path);
 		return (CMD);
 	}
 	fd = open(type->string, O_RDONLY, 0777);
