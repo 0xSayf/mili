@@ -92,7 +92,7 @@ void	ft_help(char *line, char **retu, int *i, int index)
 	j = 0;
 	while (line[*i])
 	{
-		if (line[*i] == 34 || line[*i] == '\'')
+		if (line[*i] == 34 || line[*i] == 39)
 		{
 			quote = line[*i];
 			(*i)++;

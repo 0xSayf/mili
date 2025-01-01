@@ -91,7 +91,7 @@ t_token *ft_expand_dollar(t_token *token,t_env  *env)
                     free(tmp->string);
                     tmp->string = malloc(ft_strlen(str + 1) + 1);
                     ft_memcpy(tmp->string,str + 1,ft_strlen(str + 1));
-                    tmp->string[ft_strlen(str+ 1)] = '\0';
+                    tmp->string[ft_strlen(str + 1)] = '\0';
                 }
             }
         }

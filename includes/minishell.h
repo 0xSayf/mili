@@ -134,5 +134,6 @@ int						ft_syntax_helper(t_token *tmp);
 void    				ft_env(t_env    *env);
 t_token 				*ft_expand_dollar(t_token *token,t_env  *env);
 char					*ft_strchr(const char *s, int c);
-
+t_token *ft_token_init(char *line);
+void	add_token_to_list(t_token **tokens, t_token *new_token);
 #endif
