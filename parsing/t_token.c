@@ -38,7 +38,7 @@ void    handle_special_char(char    *line, int  *i, t_token **tokens)
     *i = k;
 }
 
-t_token    *ft_go_handle_quotes(char    *line, int *i, t_token  **tokens)
+char    *ft_go_handle_quotes(char    *line, int *i, t_token  **tokens)
 {
     char    v;
     char    *str;
@@ -97,12 +97,13 @@ t_token    *ft_go_handle_quotes(char    *line, int *i, t_token  **tokens)
         if(line[*i - s] == 32 || line[*i - s] == '|')
             break;
     }
-    return ft_creat_node(str);
+    return (str);
 }
 
 t_token *ft_token_init(char *line)
 {
     int i;
+    char    *str;
     t_token *tokens;
 
     tokens = NULL;
@@ -113,8 +114,14 @@ t_token *ft_token_init(char *line)
 		    i++;
         if(ft_strchr("><|", line[i]))
             handle_special_char(line,&i,&tokens);
-         if(line[i] == 34 || line[i] == 39)
-             add_token_to_list(&tokens , ft_go_handle_quotes(line,&i,&tokens));
+        if(line[i] == 34 || line[i] == 39)
+        {
+            str = ft_go_handle_quotes(line,&i,&tokens);
+            add_token_to_list(&tokens , ft_creat_node(str));
+            free(str);
+        }
+        // else
+        //     ft_simple_word(line,&i,);
         // i++;
     }
     return tokens;
