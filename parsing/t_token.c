@@ -38,7 +38,7 @@ void    handle_special_char(char    *line, int  *i, t_token **tokens)
     *i = k;
 }
 
-char    *ft_go_handle_quotes(char    *line, int *i, t_token  **tokens)
+char    *ft_go_handle_quotes(char    *line, int *i)
 {
     char    v;
     char    *str;
@@ -46,6 +46,7 @@ char    *ft_go_handle_quotes(char    *line, int *i, t_token  **tokens)
     int     s;
     int     len;
     int     j;
+
 
     s = *i;
     len = 0;
@@ -100,6 +101,48 @@ char    *ft_go_handle_quotes(char    *line, int *i, t_token  **tokens)
     return (str);
 }
 
+char    *ft_simple_word(char *line, int *i)
+{
+    char    *str;
+    char    *ggg;
+    int     s;
+    char    *tt;
+    int     len;
+    int     j;
+    char    *ptr;
+    
+    s = *i;
+    len = 0;
+    while (line[s] && !ft_strchr("\"' |><", line[s]))
+    {
+        len++;
+        s++;
+    }
+    str = malloc(len + 1);
+    str[len] = '\0';
+    *i = s;
+    j = 0;
+    while (len)
+    {
+        str[j] = line[s - len];
+        j++;
+        len--;
+    }
+    if(line[s] == 34 || line[s] == 39)
+    {
+        if(line + s)
+            ggg = line + s;
+        int z = 0;
+        tt = ft_go_handle_quotes(ggg,&z);
+        *i = z + s;
+        ptr = ft_strjoin(str,tt);
+        free(str);
+        return ptr;
+    }
+
+    return str;
+}
+
 t_token *ft_token_init(char *line)
 {
     int i;
@@ -114,15 +157,14 @@ t_token *ft_token_init(char *line)
 		    i++;
         if(ft_strchr("><|", line[i]))
             handle_special_char(line,&i,&tokens);
-        if(line[i] == 34 || line[i] == 39)
+        else if(line[i] == 34 || line[i] == 39)
         {
-            str = ft_go_handle_quotes(line,&i,&tokens);
+            str = ft_go_handle_quotes(line,&i);
             add_token_to_list(&tokens , ft_creat_node(str));
             free(str);
         }
-        // else
-        //     ft_simple_word(line,&i,);
-        // i++;
+        else
+            add_token_to_list(&tokens , ft_creat_node(ft_simple_word(line,&i)));
     }
     return tokens;
 }

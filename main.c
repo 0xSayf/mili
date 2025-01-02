@@ -51,25 +51,13 @@ void	ft_cmd(t_env	*env, t_token *sir)
 t_token	*ft_main(t_env	*env)
 {
 	t_token	*sir;
+	char	*line;
 	
-	// tok = ft_splitix(readline("minishell % >>>>>    "));
-	char *line = readline("minishell % >>>>>    ");
-	// if(!tok)
-	// 	return NULL;
-	// sir = ft_init_token_node(tok);
+	line = readline("minishell % >>>>>    ");
 	sir = ft_token_init(line);
-	while(sir)
-		{
-			printf("%s\n", sir->string);
-			sir = sir->next;
-		}
-	// if(!sir)
-	// 	return NULL;
+	if(!sir)
+		return NULL;
 	return	sir;
-}
-void ll ()
-{
-	system("leaks -q minishell");
 }
 
 int	main(int ac, char **av, char **env)
@@ -79,17 +67,15 @@ int	main(int ac, char **av, char **env)
 	int		c;
 
 	evv = ft_initial_env(evv, env);
-	atexit(ll);
 	while (1)
 	{
 		sir = ft_main(evv);
-		// ft_geave_type(sir, env);
-		// sir = ft_expand_dollar(sir,evv);
-		
-		// c = ft_syntax(sir);
-		// if (c == 1)
-		// 	ft_cmd(evv,sir);
-		// ft_lstclear(&sir);
+		ft_geave_type(sir, env);
+		sir = ft_expand_dollar(sir,evv);
+		c = ft_syntax(sir);
+		if (c == 1)
+			ft_cmd(evv,sir);
+		ft_lstclear(&sir);
 	}
 	ft_lst_clr(&evv);
 }
