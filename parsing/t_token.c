@@ -164,7 +164,11 @@ t_token *ft_token_init(char *line)
             free(str);
         }
         else
-            add_token_to_list(&tokens , ft_creat_node(ft_simple_word(line,&i)));
+        {
+            str = ft_simple_word(line,&i);
+            add_token_to_list(&tokens ,ft_creat_node(str));
+            free(str);
+        }
     }
     return tokens;
 }

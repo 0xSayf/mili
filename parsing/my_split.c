@@ -82,12 +82,6 @@ char	**ft_splitix(char *line)
 	if (!line)
 		return (NULL);
 	add_history(line);
-	if (ft_qt(line) == 0)
-	{
-		printf("syntax error\n");
-		free(line);
-		return (NULL);
-	}
 	word = ft_counter(line, 32);
 	retu = malloc(sizeof(char *) * (word + 1));
 	retu = ft_ret(line, retu, 32, word);

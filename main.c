@@ -54,7 +54,15 @@ t_token	*ft_main(t_env	*env)
 	char	*line;
 	
 	line = readline("minishell % >>>>>    ");
+	add_history(line);
+	if (ft_qt(line) == 0)
+	{
+		printf("syntax error\n");
+		free(line);
+		return (NULL);
+	}
 	sir = ft_token_init(line);
+	free(line);
 	if(!sir)
 		return NULL;
 	return	sir;
